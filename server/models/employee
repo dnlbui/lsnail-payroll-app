@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-var crypto = require('crypto');
+const Schema   = mongoose.Schema;
+var   crypto   = require('crypto');
 
 // Define model for an employee
 const EmployeeSchema = new Schema({
