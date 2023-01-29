@@ -4,6 +4,7 @@ var   crypto   = require('crypto');
 
 // Define model for an employee
 const EmployeeSchema = new Schema({
+  "role"    : {type: String, lowercase: true},
   "email"   : { type: String, unique: true, lowercase: true },
   "image"   : String,
   "hash"    : String,
@@ -28,7 +29,6 @@ const TicketSchema = new Schema(
     "serviceDate"   : Date,
     "serviceTotal"  : Number,
     "creditCardTip" : Number,
-
   },
   // will create fields of createdAt: and updatedAt
   { timestamps: true }
