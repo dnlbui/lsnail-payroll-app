@@ -38,11 +38,12 @@ exports.currentEmployee = function(req, res) {
 exports.signup = function(req, res, next) {
   const email = req.body.email;
   const password = req.body.password;
+  const name = req.body.name;
 
   console.log(email);
 
-  if(!email || !password) {
-    return res.status(422).send({ error: 'You must provide an email or password'});
+  if(!email || !password || !name) {
+    return res.status(422).send({ error: 'You must provide an name, email, and password'});
   }
 
   // See if a employee with the given email exists
@@ -60,6 +61,8 @@ exports.signup = function(req, res, next) {
     employee.email = email;
 
     employee.setPassword(password);
+
+    employee.name = name;
 
     employee.save(function(err, employee) {
       if ( err ) { return next (err); }

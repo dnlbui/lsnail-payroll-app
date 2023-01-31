@@ -5,6 +5,7 @@ var   crypto   = require('crypto');
 // Define model for an employee
 const EmployeeSchema = new Schema({
   "role"    : {type: String, lowercase: true},
+  "name"    : {type: String, lowercase: true},
   "email"   : { type: String, unique: true, lowercase: true },
   "image"   : String,
   "hash"    : String,
