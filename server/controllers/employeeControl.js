@@ -55,6 +55,32 @@ exports.createNewTicket = function (req, res) {
   })
 }
 
-exports.ticketQuery = (req, res) => {
-  
+exports.ticketQuery = async (req, res) => {
+  const dateStart = req.query.dateStart || null;
+  const dateEnd = req.query.dateEnd || null;
+  //employee ID...************************************
+  const employeeId = req.query.employeeId || null;
+  //when on front end just make the query desc or asc
+  const priceSortFrom = req.query.sortOrder  === "highest" ? "desc"
+                        :req.query.sortOrder === "lowest"  ? "asc"
+                        :req.query.sortOrder !== undefined ? req.query.price.toLowerCase() //lowecases all price inputs
+                        :null; 
+
+  await Ticket
+  .find(
+    !employeeId && !dateStart || !dateEnd   ? {}
+    :!dateStart || !dateEnd                 ? {_id: employeeId}
+    :!employeeId                            ? {"serviceDate":{ "$gte": dateStart, "$lt" : dateEnd}}
+    :{"serviceDate":{ "$gte": dateStart, "$lt" : dateEnd}, _id: employeeId}
+  )
+  .sort({ price: priceSortFrom })
+  .exec((err, tickets) => {
+    if(err) throw err;
+    res.send(tickets)
+  })
+}
+
+// 
+exports.aggregateTickets = async (req, res) => {
+
 }

@@ -1,6 +1,6 @@
-const Authentication  = require('./controllers/authentication');
-const passportService = require('./services/passport');
-const passport        = require('passport');
+const Authentication     = require('./controllers/authentication');
+const passportService    = require('./services/passport');
+const passport           = require('passport');
 const EmployeeControl    = require('./controllers/employeeControl')
 
 const requireAuth   = passport.authenticate('jwt', { session: false });
@@ -23,16 +23,11 @@ module.exports = function(app) {
   app.delete('/api/employeelist/:employee', requireAuth, EmployeeControl.removeEmployee)
   
   
-  //route that .post a new ticket into an employee's document
+  //route that .post a new ticket into an employee's document (completed)
   app.post('/api/ticket/:employee', requireAuth, EmployeeControl.createNewTicket)
-  //route that gets ticket lists from a specific queries
+  //route that gets ticket lists from a specific queries (completed)
   app.get('/api/ticket/', requireAuth, EmployeeControl.ticketQuery)
-  
-
-  //route that aggregates week of the day for a certain week....
-
-  //route that gets employee list from all of the data
-
   //route that .get by finding the employee by ID or name... then queries for date range... then aggregates the tickets total... Then manipulate the data to get what we need
+  app.get('/api/ticket/aggregation', requireAuth, EmployeeControl.aggregateTickets)
   
 };
