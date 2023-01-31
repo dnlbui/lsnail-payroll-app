@@ -34,8 +34,5 @@ const TicketSchema = new Schema(
   { timestamps: true }
 )
 
-const EmployeeModel = mongoose.model('employee', EmployeeSchema);
-const TicketModel = mongoose.model('ticket', TicketSchema)
-
 module.exports = {Employee: mongoose.model('employee', EmployeeSchema), Ticket: mongoose.model('ticket', TicketSchema)};
 
