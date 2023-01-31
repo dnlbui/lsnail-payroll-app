@@ -10,6 +10,7 @@ const app = express();
 
 mongoose.set("strictQuery", false);
 
+//*****NEED TO CHANGE THIS ONCE GETTING EVERYTHING COMPLETED (keys.MONGODB_URI) */
 mongoose.connect("mongodb://127.0.0.1:27017/lsnails-db", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -17,12 +18,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/lsnails-db", {
 
 app.use(cors());
 
+app.use(bodyParser.urlencoded({ extended: false,}));
 app.use(bodyParser.json());
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
 
 router(app);
 
