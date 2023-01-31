@@ -9,23 +9,29 @@ const requireSignin = passport.authenticate('local', { session: false });
 module.exports = function(app) {
   // returns token if user is Employee is able to authenticate
   
-  //login
+  //login (completed)
   app.post('/auth/signin', requireSignin, Authentication.signin);
-  //sign up
+  //sign up (completed) 
   app.post('/auth/signup', Authentication.signup);
-  //add employee to db
+  
+
+  //add employee to db (completed)
   app.post('/api/employeelist', requireAuth, EmployeeControl.createNewEmployee)
-  //remove employee from db
-  //app.delete('/api/employeelist/:employeeId', requireAuth, )
+  //Returns an array of objects with all ID+name inside employee model (completed)
+  app.get('/api/employeelist', requireAuth, EmployeeControl.getEmployeeList)
+  //remove employee from db (completed) (figure out how to set the url...)
+  app.delete('/api/employeelist/:employee', requireAuth, EmployeeControl.removeEmployee)
+  
+  
+  //route that .post a new ticket into an employee's document
+  app.post('/api/ticket/:employee', requireAuth, EmployeeControl.createNewTicket)
+  //route that gets ticket lists from a specific queries
+  app.get('/api/ticket/', requireAuth, EmployeeControl.ticketQuery)
+  
+
   //route that aggregates week of the day for a certain week....
 
   //route that gets employee list from all of the data
-
-  //route that .post a new employee... similar to sign up?
-
-  //route that gets ticket lists from a specific queries
-
-  //route that .post a new ticket into an employee's document
 
   //route that .get by finding the employee by ID or name... then queries for date range... then aggregates the tickets total... Then manipulate the data to get what we need
   
