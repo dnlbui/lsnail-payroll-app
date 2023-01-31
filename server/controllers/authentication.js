@@ -1,35 +1,36 @@
-const jwt      = require('jwt-simple');
-const Employee = require('../models/employee');
-const keys     = require('../config/dev');
+const jwt        = require('jwt-simple');
+const {Employee} = require('../models/employee');
+const keys       = require('../config/dev');
 
 function tokenForEmployee(employee) {
+  console.log(employee)
   return jwt.encode(
     {
       sub: employee.id,
       // issued at
       iat: Math.round(Date.now() / 1000),
       // expiration at
-      exp: Math.rount(Date.now() / 1000 + 5 * 60 * 60)
+      exp: Math.round(Date.now() / 1000 + 5 * 60 * 60)
     }, 
     keys.TOKEN_SECRET
   )
 };
-
+//figure out WHY req.user and not req.employee
 exports.signin = function(req, res, next) {
   // Employee has had their email and password auth'd
   // Just need to give them a token
   res.send({
-    token: tokenForEmployee(req.employee)
+    token: tokenForEmployee(req.user)
   });
 };
 
 exports.currentEmployee = function(req, res) {
   const employee = {
-    email: req.employee.email,
-    token: tokenForEmployee(req.employee),
+    email: req.user.email,
+    token: tokenForEmployee(req.user),
   }
 
-  res.send(employee);
+  res.send(user);
 };
 
 // MIGHT NEED TO ADD WAY TO SET UP ROLE 

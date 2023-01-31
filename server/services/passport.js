@@ -1,5 +1,5 @@
 const passport = require('passport');
-const Employee = require("../models/employee");
+const {Employee} = require("../models/employee");
 const keys = require('../config/keys');
 
 const ExtractJwt = require('passport-jwt').ExtractJwt;
@@ -12,7 +12,7 @@ const localOptions = { usernameField: 'email' };
 
 const localLogin = new LocalStrategy(localOptions, function(email, password, done) {
   // Verify this email and password
-  // call done and return the user
+  // call done and return the employee
   // otherwise, call done with false
   Employee.findOne({ email: email }, function(err, employee){
     if ( err ) { return done(err); }
@@ -22,7 +22,7 @@ const localLogin = new LocalStrategy(localOptions, function(email, password, don
       return done( null, false, { message: 'Incorrect password.' })
     }
 
-    return done( null, user );
+    return done( null, employee );
   });
 });
 
@@ -34,15 +34,15 @@ const jwtOptions = {
 
 // Create JWT Strategy
 const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done){
-  // Check if user ID in payload exists in DB
-  // If true then 'call' done w/ user
+  // Check if employee ID in payload exists in DB
+  // If true then 'call' done w/ employee
   // otherise, call done without false
 
-  Employee.findbyId(payload.sub, function(err, user) {
+  Employee.findById(payload.sub, function(err, employee) {
     if (err) { return done(err, false) }
 
-    if(user) {
-      done(null, user)
+    if(employee) {
+      done(null, employee)
     } else {
       done(null, false)
     }
