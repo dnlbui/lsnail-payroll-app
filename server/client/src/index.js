@@ -6,42 +6,28 @@ import { store } from './app/store';
 import App from './App';
 import './index.css';
 import {ApiProvider} from '@reduxjs/toolkit/query/react'
-import {productsApiSlice} from './features/api/apiSlice'
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {apiSlice} from './app/api/apiSlice'
 import Nav from "./components/Nav";
+
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <ApiProvider api={productsApiSlice}>
+    <ApiProvider api={apiSlice}>
       <Provider store={store}>
-        <Router>
-          <Fragment>
-            <Nav />
-            <App>
-              <Switch>
-                <Route>
-
-                </Route>
-                <Route>
-                  
-                </Route>
-                <Route>
-                
-                </Route>
-                <Route>
-                  
-                </Route>
-                <Route>
-                
-                </Route>
-              </Switch>
-            </App>
-          </Fragment>
-      </Router>
+        <Nav />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/*" element={<App />} />
+          </Routes>
+        </BrowserRouter>
       </Provider>
     </ApiProvider>
   </React.StrictMode>

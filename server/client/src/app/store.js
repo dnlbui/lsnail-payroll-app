@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import {emloyeesApiSlice} from '../features/api/apiSlice';
+import { apiSlice } from './api/apiSlice';
+
 
 export const store = configureStore({
   reducer: {
-    
+    [apiSlice.reducerPath]: apiSlice.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(emloyeesApiSlice.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
+  devTools: true //turn off during PRODUCTION RUN*********************
 });
