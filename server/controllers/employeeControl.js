@@ -1,4 +1,5 @@
 const {Employee, Ticket} = require('../models/employee');
+const ObjectId = require('mongoose').Types.ObjectId
 
 // Creates a new employee profile
 exports.createNewEmployee = function (req, res) {
@@ -45,7 +46,7 @@ exports.createNewTicket = function (req, res) {
   });
 
   Employee.findOne({_id: employeeId}, (err,data) => {
-    console.log(data);
+    //console.log(data);
     newTicket.employee.push(data);
     newTicket.save();
   });
@@ -68,10 +69,11 @@ exports.ticketQuery = async (req, res) => {
 
   await Ticket
   .find(
-    !employeeId && !dateStart || !dateEnd   ? {}
-    :!dateStart || !dateEnd                 ? {_id: employeeId}
+    !employeeId && !dateStart               ? {}
+    :!dateStart || !dateEnd                 ? {employee:  ObjectId(employeeId)}
     :!employeeId                            ? {"serviceDate":{ "$gte": dateStart, "$lt" : dateEnd}}
-    :{"serviceDate":{ "$gte": dateStart, "$lt" : dateEnd}, _id: employeeId}
+    :{serviceDate:{ "$gte": dateStart, "$lt" : dateEnd}, employee:  ObjectId(employeeId)}
+    
   )
   .sort({ price: priceSortFrom })
   .exec((err, tickets) => {
@@ -82,5 +84,29 @@ exports.ticketQuery = async (req, res) => {
 
 // 
 exports.aggregateTickets = async (req, res) => {
+  const employeeId = await req.query.employeeId || null;
+  const dateStart = await req.query.dateStart || null;
+  const dateEnd = await req.query.dateEnd || null;
+  const priceSortFrom = req.query.sortOrder  === "highest" ? "desc"
+  :req.query.sortOrder === "lowest"  ? "asc"
+  :req.query.sortOrder !== undefined ? req.query.price.toLowerCase() //lowecases all price inputs
+  :null; 
 
+  //had to use new date b/c when using mongodb match the date strings do not automatically change to numbers...
+  Ticket.aggregate([{$match: { employee:  ObjectId(employeeId), "serviceDate": { "$gt": new Date(dateStart), "$lt" : new Date(dateEnd) } }}])
+  .group({ _id: employeeId, serviceTotal: {$sum: '$serviceTotal'}, tipTotal: {$sum: '$creditCardTip'}})
+  .exec((err, tickets) => {
+    console.log(tickets);
+    if(err) throw err;
+    tickets[0].grossTotal = tickets[0].serviceTotal + tickets[0].tipTotal;
+    const employeeNet = tickets[0].grossTotal * 0.6;
+    tickets[0].EmployeePayCheck = employeeNet/2 + tickets[0].tipTotal;
+    tickets[0].EmployeePayCash  = employeeNet/2 - tickets[0].tipTotal;
+    tickets[0].netShopTotal = tickets[0].grossTotal - employeeNet;
+    console.log(tickets)
+    res.send(tickets)
+  })
 }
+
+//aggregate.match({ employee: { $in: [ employeeId] } });
+//{ employee:  ObjectId(employeeId), $and: {serviceDate:{ "$gt": dateStart, "$lt" : dateEnd}}}
