@@ -7,9 +7,10 @@ const requireAuth   = passport.authenticate('jwt', { session: false });
 const requireSignin = passport.authenticate('local', { session: false });
 
 module.exports = function(app) {
-  // returns token if user is Employee is able to authenticate
+  
   
   //login (completed)
+  // returns token if user is Employee is able to authenticate
   app.post('/auth/signin', requireSignin, Authentication.signin);
   //sign up (completed) 
   app.post('/auth/signup', Authentication.signup);
@@ -17,7 +18,7 @@ module.exports = function(app) {
 
   //add employee to db (completed)
   app.post('/api/employeelist', requireAuth, EmployeeControl.createNewEmployee)
-  //Returns an array of objects with all ID+name inside employee model (completed)
+  //Returns an array of objects with all ID+name inside employee model (completed).... COULD USE AGGREGATION AND RETURN AN ARRAY OF NAMES ONLY USING DISTINCT 
   app.get('/api/employeelist', requireAuth, EmployeeControl.getEmployeeList)
   //remove employee from db (completed) (figure out how to set the url...)
   app.delete('/api/employeelist/:employee', requireAuth, EmployeeControl.removeEmployee)
