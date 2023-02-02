@@ -4,20 +4,21 @@ import {useNavigate} from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 import { setCredentials } from './authSlice';
-import { useLoginMutation } from './authApiSlice';
+import { useRegisterMutation } from './authApiSlice';
 import Nav from '../../components/UnAuthNav';
 
 
 //Returns a card for each product
-const Login = () => {
+const Register = () => {
   const userRef = useRef()
   const errRef = useRef()
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errMsg, setErrMsg] = useState('')
   const navigate = useNavigate()
 
-  const [login, { isLoading }] = useLoginMutation()
+  const [register, { isLoading }] = useRegisterMutation()
   const dispatch = useDispatch()
 
   useEffect(()=> {
@@ -33,12 +34,13 @@ const Login = () => {
 
     try{
       //unwrap from redux toolkit cuz lets us use try catch block and response accordingly 
-      const userData = await login({ email, password }).unwrap()
+      const userData = await register({ email, password, name }).unwrap()
       // argument should return token and username
       dispatch(setCredentials({ ...userData, email }))
       //set local state to empty string
       setEmail('');
       setPassword('');
+      setName('');
       navigate('/welcome')
     } catch (err) {
       if(!err?.response) {
@@ -48,40 +50,48 @@ const Login = () => {
       } else if (err.originalStatus?.status === 401) {
         setErrMsg('Unauthorized');
       } else {
-        setErrMsg('Login Failed');
+        setErrMsg('register Failed');
       }
       errRef.current.focus();
     }
   }
 
-  const handleUserInput = (e) => setEmail(e.target.value);
-  const handlepasswordInput = (e) => setPassword(e.target.value);
+  const handleEmailInput = (e) => setEmail(e.target.value);
+  const handlePasswordInput = (e) => setPassword(e.target.value);
+  const handleNameInput = (e) => setName(e.target.value);
+
 
   const content = isLoading ? <h1>Loading...</h1> : (
     <Fragment>
     <Nav/>
     <div className='container'>
-    <section className='login'>
+    <section className='register'>
       <div className="row row-cols-2 gy-10 offset-4">
         <br></br>
         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
         <br></br>
       </div>
       <div className="row row-cols-2 gy-5 offset-4">
-        <h1>Log In</h1>
+        <h1>Register</h1>
       </div>
       <div className="row row-cols-2 gy-5 offset-4">
         <form onSubmit={handleSubmit}>
+          {/* <!-- Name input --> */}
+          <div className="form-outline mb-4">
+            <input type="text" id="name" ref={userRef} value={name} onChange={handleNameInput} required className="form-control" />
+            <label className="form-label" htmlFor="NameInput">Name</label>
+          </div>
+
           {/* <!-- Email input --> */}
           <div className="form-outline mb-4">
-            <input type="email" id="username" ref={userRef} value={email} onChange={handleUserInput} required className="form-control" />
-            <label className="form-label" htmlFor="form2Example1">Email address</label>
+            <input type="email" id="email" ref={userRef} value={email} onChange={handleEmailInput} required className="form-control" />
+            <label className="form-label" htmlFor="EmailInput">Email address</label>
           </div>
 
           {/* <!-- Password input --> */}
           <div className="form-outline mb-4">
-            <input type="password" id="password" onChange={handlepasswordInput} value={password} required className="form-control" />
-            <label className="form-label" htmlFor="form2Example2">Password</label>
+            <input type="password" id="password" onChange={handlePasswordInput} value={password} required className="form-control" />
+            <label className="form-label" htmlFor="PasswordInput">Password</label>
           </div>
 
           {/* <!-- Submit button --> */}
@@ -89,7 +99,7 @@ const Login = () => {
 
           {/* <!-- Register buttons --> */}
           <div className="text-center">
-            <p>Create an account? <a href="/register">Register</a></p>
+            <p>Have an existing account? <a href="/login">Login</a></p>
           </div>
         </form>
       </div>
@@ -101,4 +111,4 @@ const Login = () => {
   return content
 }
 
-export default Login;
+export default Register;

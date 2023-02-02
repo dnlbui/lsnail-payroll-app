@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
 
@@ -6,23 +7,23 @@ const Nav = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">Lone Star Nails</a>
+        <Link to="/home" className="navbar-brand"  aria-current="page">Lone Star Nails</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">Home</a>
+              <Link to="/home" className="nav-link active" aria-current="page">Home</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">Tickets</a>
+              <Link to="/tickets" className="nav-link active" aria-current="page">Tickets</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">Payroll</a>
+              <Link to="/payroll" className="nav-link active" aria-current="page">Payroll</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">Invoice</a>
+              <Link to="/employees" className="nav-link active" aria-current="page">Employees</Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/">Logout</a>
@@ -33,5 +34,7 @@ const Nav = () => {
     </nav>
   );
 };
+
+// <Link to="/home" className="nav-link active" aria-current="page">Home</Link>
 
 export default Nav;

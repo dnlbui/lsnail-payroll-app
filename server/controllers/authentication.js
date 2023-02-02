@@ -3,7 +3,7 @@ const {Employee} = require('../models/employee');
 const keys       = require('../config/dev');
 
 function tokenForEmployee(employee) {
-  console.log(employee)
+  console.log(employee +" Inside token for employee in authentication file")
   return jwt.encode(
     {
       sub: employee.id,

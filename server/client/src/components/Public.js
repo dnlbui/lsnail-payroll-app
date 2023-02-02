@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom"
+import { Fragment } from "react"
+import Nav from "./UnAuthNav"
 
 const Public = () => {
 
     const content = (
+        <Fragment>
+            <Nav/>
+        <div className='container'>
       <div className="row row-cols-1 gy-4 offset-3">
         <section className="public">
             <header>
@@ -27,6 +32,8 @@ const Public = () => {
             </footer>
         </section>
         </div>
+        </div>
+        </Fragment>
     )
     return content
 }
