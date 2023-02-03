@@ -1,8 +1,9 @@
+//ideally make a slice to in order to have global state of when a button is pressed or not. Then merge auth and unauth together. 
+//have it change if authorized or unauthorized
+
 import React from "react";
 
 const Nav = () => {
-
-
   return (
     <nav className="navbar navbar-dark navbar-expand-lg bg-primary">
       <div className="container-fluid">

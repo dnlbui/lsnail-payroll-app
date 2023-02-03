@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { Fragment } from "react"
-import Nav from "./UnAuthNav"
+import Nav from "./NavUnAuth"
 
 const Public = () => {
 

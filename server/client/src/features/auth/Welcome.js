@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { selectCurrentEmail, selectCurrentToken } from "./authSlice";
 import { Link } from "react-router-dom"
 import {Fragment} from "react";
-import Nav from "../../components/AuthNav";
+import Nav from "../../components/NavAuth";
 
 const Welcome = () => {
   const user = useSelector(selectCurrentEmail)

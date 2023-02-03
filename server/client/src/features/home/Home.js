@@ -2,7 +2,7 @@
 import {Fragment} from "react";
 import { useSelector } from "react-redux";
 import { selectCurrentEmail } from "../auth/authSlice";
-import Nav from "../../components/AuthNav";
+import Nav from "../../components/NavAuth";
 
 
 const Home = () => {

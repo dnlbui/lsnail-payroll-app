@@ -5,7 +5,7 @@ import {useNavigate} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setCredentials } from './authSlice';
 import { useLoginMutation } from './authApiSlice';
-import Nav from '../../components/UnAuthNav';
+import Nav from '../../components/NavUnAuth';
 
 
 //Returns a card for each product
