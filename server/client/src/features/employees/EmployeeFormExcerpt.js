@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import { useRef, useState, useEffect } from 'react';
 import {useNavigate} from 'react-router-dom';
 
-import { useRegisterMutation } from './EmployeesListApiSlice';
+import { useRegisterMutation } from './EmployeesApiSlice';
 
 
 //Returns a card for each product

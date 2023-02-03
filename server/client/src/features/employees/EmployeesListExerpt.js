@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { useEmployeesListQuery } from "./EmployeesListApiSlice";
+import { useEmployeesListQuery } from "./EmployeesApiSlice";
 import EmployeeCardExcerpt from "./EmployeeCardExcerpt";
 
 
