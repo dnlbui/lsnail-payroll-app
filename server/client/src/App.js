@@ -6,7 +6,7 @@ import Welcome from './features/auth/Welcome'
 import RequireAuth from './features/auth/RequireAuth'
 import Register from './features/auth/Register'
 import Home from './features/home/Home'
-import EmployeesList from './features/employees/EmployeesList'
+import Employees from './features/employees/Employees'
 
 
 const App = () => {
@@ -22,7 +22,7 @@ const App = () => {
         <Route element={<RequireAuth />}>
           <Route path="welcome" element={<Welcome/>} />
           <Route path="home" element={ <Home/> } />
-          <Route path="employees" element={<EmployeesList/>} />
+          <Route path="employees" element={<Employees/>} />
           {/* <Route path="employees" element={<Employees/>} /> */}
           {/* <Route path="employees" element={<Employees/>} /> */}
         </Route>
