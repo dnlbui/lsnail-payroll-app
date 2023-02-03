@@ -14,7 +14,7 @@ const Home = () => {
     <Fragment>
       <Nav/>
       <div className='container'>
-        <div className="row row-cols-1 gy-5 offset-3">
+        <div className="row row-cols-1 gy-5 offset-1">
           <section className="welcome">
             <h1>{home}</h1>
           </section>

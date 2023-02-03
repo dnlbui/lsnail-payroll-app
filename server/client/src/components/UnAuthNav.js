@@ -4,7 +4,7 @@ const Nav = () => {
 
 
   return (
-    <nav className="navbar navbar-expand-lg bg-light">
+    <nav className="navbar navbar-dark navbar-expand-lg bg-primary">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">Lone Star Nails</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

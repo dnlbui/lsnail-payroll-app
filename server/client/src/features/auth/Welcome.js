@@ -16,11 +16,11 @@ const Welcome = () => {
     <Fragment>
       <Nav/>
       <div className='container'>
-        <div className="row row-cols-3 gy-10 offset-5">
+        <div className="row row-cols-1 gy-5 offset-3">
           <section className="welcome">
             <h1>{welcome}</h1>
             <p>Token: {tokenAbbr}</p>
-            <p><Link to="/home">Go to the Users List</Link></p>
+            <p><Link to="/home">Go to the home page!</Link></p>
           </section>
         </div>
       </div>
