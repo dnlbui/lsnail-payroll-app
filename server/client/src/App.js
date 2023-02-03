@@ -9,9 +9,7 @@ import Home from './features/home/Home'
 
 
 const App = () => {
-
   return (
-    
     <Routes>
       <Route path='/' element={<Layout/>}>
         {/* public routes */}
@@ -25,8 +23,8 @@ const App = () => {
           <Route path="home" element={ <Home/> } />
           {/* <Route path="employees" element={<Employees/>} /> */}
           {/* <Route path="employees" element={<Employees/>} /> */}
+          {/* <Route path="employees" element={<Employees/>} /> */}
         </Route>
-        
       </Route>
     </Routes>
   
