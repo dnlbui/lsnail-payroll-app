@@ -10,9 +10,9 @@ export const authApiSlice = apiSlice.injectEndpoints({
         providesTags: ['employeelist']
       })
     }),
-    register: builder.mutation({
+    employeeForm: builder.mutation({
       query: (credentials) => ({
-        url:'/auth/signup',
+        url:'api/employeelist',
         method: 'POST',
         body: {...credentials},
         providesTags: ['regEmployee']
@@ -22,5 +22,5 @@ export const authApiSlice = apiSlice.injectEndpoints({
 })
 
 export const {
-  useEmployeesListQuery, useRegisterMutation
+  useEmployeesListQuery, useEmployeeFormMutation
 } = authApiSlice
