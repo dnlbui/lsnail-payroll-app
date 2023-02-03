@@ -2,20 +2,21 @@ import React, {Fragment} from 'react';
 import { useRef, useState, useEffect } from 'react';
 import {useNavigate} from 'react-router-dom';
 
-import { useRegisterMutation } from './EmployeesApiSlice';
+import { useEmployeeFormMutation } from './EmployeesApiSlice';
 
 
 //Returns a card for each product
 const EmployeeForm = () => {
   const userRef = useRef()
   const errRef = useRef()
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [image, setImage] = useState('')
   const [errMsg, setErrMsg] = useState('')
   const navigate = useNavigate()
 
-  const [register, { isLoading }] = useRegisterMutation()
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [image, setImage] = useState('')
+
+  const [employeeForm, { isLoading }] = useEmployeeFormMutation()
 
   useEffect(()=> {
     userRef.current.focus()
@@ -30,7 +31,7 @@ const EmployeeForm = () => {
 
     try{
       //unwrap from redux toolkit cuz lets us use try catch block and response accordingly 
-      register({ email, image, name });
+      employeeForm({ email, image, name });
       //set local state to empty string
       setEmail('');
       setImage('');
