@@ -50,7 +50,7 @@ const Register = () => {
       } else if (err.originalStatus?.status === 401) {
         setErrMsg('Unauthorized');
       } else {
-        setErrMsg('register Failed');
+        setErrMsg('Register Failed');
       }
       errRef.current.focus();
     }
