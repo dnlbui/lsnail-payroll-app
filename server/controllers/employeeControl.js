@@ -18,7 +18,7 @@ exports.createNewEmployee = function (req, res) {
 exports.getEmployeeList =  async (req, res) => {
   Employee.find()
   //don't need to put _id bc it'll be added automatically
-  .select(['name'])
+  .select(['name','image'])
   .exec((err,e) => {
     if(err) throw err;
     res.send(e);
