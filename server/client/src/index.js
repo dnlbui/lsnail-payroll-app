@@ -6,7 +6,6 @@ import { store } from './app/store';
 import App from './App';
 import './index.css';
 import {ApiProvider} from '@reduxjs/toolkit/query/react'
-
 import {apiSlice} from './app/api/apiSlice'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
@@ -17,7 +16,6 @@ root.render(
   <React.StrictMode>
     <ApiProvider api={apiSlice}>
       <Provider store={store}>
-
         <BrowserRouter>
           <Routes>
             <Route path="/*" element={<App />} />

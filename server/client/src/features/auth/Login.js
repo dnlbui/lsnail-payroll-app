@@ -61,39 +61,39 @@ const Login = () => {
     <Fragment>
     <Nav/>
     <div className='container'>
-    <section className='login'>
-      <div className="row row-cols-2 gy-10 offset-4">
-        <br></br>
-        <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-        <br></br>
-      </div>
-      <div className="row row-cols-2 gy-5 offset-4">
-        <h1>Log In</h1>
-      </div>
-      <div className="row row-cols-2 gy-5 offset-4">
-        <form onSubmit={handleSubmit}>
-          {/* <!-- Email input --> */}
-          <div className="form-outline mb-4">
-            <input type="email" id="username" ref={userRef} value={email} onChange={handleUserInput} required className="form-control" />
-            <label className="form-label" htmlFor="form2Example1">Email address</label>
-          </div>
+      <section className='login'>
+        <div className="row row-cols-2 gy-10 offset-4">
+          <br></br>
+          <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+          <br></br>
+        </div>
+        <div className="row row-cols-2 gy-5 offset-4">
+          <h1>Log In</h1>
+        </div>
+        <div className="row row-cols-2 gy-5 offset-4">
+          <form onSubmit={handleSubmit}>
+            {/* <!-- Email input --> */}
+            <div className="form-outline mb-4">
+              <input type="email" id="username" ref={userRef} value={email} onChange={handleUserInput} required className="form-control" />
+              <label className="form-label" htmlFor="form2Example1">Email address</label>
+            </div>
 
-          {/* <!-- Password input --> */}
-          <div className="form-outline mb-4">
-            <input type="password" id="password" onChange={handlepasswordInput} value={password} required className="form-control" />
-            <label className="form-label" htmlFor="form2Example2">Password</label>
-          </div>
+            {/* <!-- Password input --> */}
+            <div className="form-outline mb-4">
+              <input type="password" id="password" onChange={handlepasswordInput} value={password} required className="form-control" />
+              <label className="form-label" htmlFor="form2Example2">Password</label>
+            </div>
 
-          {/* <!-- Submit button --> */}
-          <button type="submit" className="btn btn-primary btn-block mb-4">Sign in</button>
+            {/* <!-- Submit button --> */}
+            <button type="submit" className="btn btn-primary btn-block mb-4">Sign in</button>
 
-          {/* <!-- Register buttons --> */}
-          <div className="text-center">
-            <p>Create an account? <a href="/register">Register</a></p>
-          </div>
-        </form>
-      </div>
-    </section>
+            {/* <!-- Register buttons --> */}
+            <div className="text-center">
+              <p>Create an account? <a href="/register">Register</a></p>
+            </div>
+          </form>
+        </div>
+      </section>
     </div>
     </Fragment>
   )
