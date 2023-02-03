@@ -2,14 +2,16 @@
 import TicketForm ; */
 import Nav from "../../components/NavAuth";
 import { Fragment } from 'react';
+import TicketForm from "./TicketFormExcert";
 
 const Tickets = () => {
 
   return (
     <Fragment>
       <Nav/>
-{/*       <TicketsList/>
-      <TicketForm/> */}
+      <TicketForm/>
+      {/* <TicketsList/> */}
+
     </Fragment>
   )
 }
