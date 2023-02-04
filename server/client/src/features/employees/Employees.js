@@ -3,8 +3,6 @@ import EmployeeForm from "./EmployeeFormExcerpt"
 import Nav from "../../components/NavAuth";
 import { Fragment } from 'react';
 
-
-
 const Employees = () => {
 
   return (
