@@ -3,11 +3,11 @@ import { apiSlice } from "../../app/api/apiSlice";
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
-    employeesList: builder.query({
+    employeesList: builder.query({ 
       query: () => ({
         url:'api/employeelist',
         method: 'GET',
-        providesTags: ['employeelist']
+        providesTags: ['Get'] 
       })
     }),
     employeeForm: builder.mutation({
@@ -15,7 +15,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
         url:'api/employeelist',
         method: 'POST',
         body: {...credentials},
-        providesTags: ['regEmployee']
+        invalidatesTags: ['Get']
       })
     })
   })
@@ -24,3 +24,5 @@ export const authApiSlice = apiSlice.injectEndpoints({
 export const {
   useEmployeesListQuery, useEmployeeFormMutation
 } = authApiSlice
+
+
