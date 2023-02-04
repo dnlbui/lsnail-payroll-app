@@ -1,16 +1,14 @@
-import { Form,Button, DateRangePicker, SelectPicker } from 'rsuite';
+import { Form, DateRangePicker, SelectPicker } from 'rsuite';
 import { Fragment, useState } from 'react';
 import { useEmployeesListQuery } from '../employees/EmployeesApiSlice';
-import { useTicketsListQuery } from './TicketsApiSlice';
+import TicketList from './TicketListExcerpt';
 
-const TicketsListSearchBar = () => {
+const TicketSearchBar = () => {
   const [startDate, setStartDate] = useState(new Date('2022-02-01 00:00:00'));
   const [endDate, setEndDate] = useState(new Date('2022-05-01 23:59:59'));
   const [name, setName] = useState("Pick an Employee" );
 
-  const {employeeList} = useTicketsListQuery();
-
-  const handleNameInput = (event) => {setName(event); console.log(event)};
+  const handleNameInput = (event) => {setName(event)};
   const handleStartDateInput = async (value) => {setStartDate(value)};
   const handleEndDateInput = async (value) => setEndDate(value);
 
@@ -37,43 +35,33 @@ const TicketsListSearchBar = () => {
     content = <p>{error}</p>
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    try{
-      employeeList({name,startDate,endDate});
-      setStartDate('');
-      setEndDate('');
-      setName('');  
-    }
-    catch (err) {
-      console.log(err)
-    }
-  }
-
 
   return (
     <Fragment>
-    <div className='col-lg-7 offset-lg-3 '>
-      <Form layout="inline" onSubmit={(e)=>handleSubmit(e)}>
-        {content}
+    <div className='col-lg-6 offset-lg-4 '>
+      <Form layout="inline">
 
-        <DateRangePicker
-          format="yyyy-MM-dd hh:mm aa"
-          showMeridian
-          defaultCalendarValue={[startDate, endDate]}
-          hoverRange="week" 
-          isoWeek ranges={[]}
-          onOk={(value)=>{ handleStartDateInput(value[0]); handleEndDateInput(value[1]);}}
-        />
+        <Form.Group controlId="username-7">
+          {content}
+        </Form.Group>
 
-        <Button>Submit Ticket Filter</Button>
+        <Form.Group controlId="date-7">
+          <DateRangePicker
+            format="yyyy-MM-dd hh:mm aa"
+            showMeridian
+            defaultCalendarValue={[startDate, endDate]}
+            hoverRange="week" 
+            isoWeek ranges={[]}
+            onOk={(value)=>{ handleStartDateInput(value[0]); handleEndDateInput(value[1]);}}
+          />
+        </Form.Group>
+
       </Form>
-      
+      <TicketList name={name} startDate={startDate} endDate={endDate}/>
     </div>
     <hr/>
     </Fragment>
     )
 }
 
-export default TicketsListSearchBar;
+export default TicketSearchBar;

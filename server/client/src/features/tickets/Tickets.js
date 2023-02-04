@@ -3,7 +3,7 @@ import TicketForm ; */
 import Nav from "../../components/NavAuth";
 import { Fragment } from 'react';
 //import TicketForm from "./TicketFormExcert";
-import TicketsList from "./TicketsListExcert";
+import TicketsList from "./TicketsExcert";
 
 const Tickets = () => {
 

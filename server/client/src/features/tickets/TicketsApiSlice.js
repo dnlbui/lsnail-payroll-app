@@ -1,7 +1,7 @@
 // an extended slice of the api slice in app folder
 import { apiSlice } from "../../app/api/apiSlice";
 
-export const authApiSlice = apiSlice.injectEndpoints({
+export const ticketsApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     ticketsList: builder.query({
       query: (employeeId,dateStart,dateEnd) => ({
@@ -21,8 +21,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
   })
 })
 
-export const select = apiSlice.endpoints.getUsers.select()
-
 export const {
   useTicketsListQuery, useRegisterTicketMutation
-} = authApiSlice
+} = ticketsApiSlice
