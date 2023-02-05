@@ -3,6 +3,9 @@ import { useTicketsListQuery } from "./TicketsApiSlice";
 import TicketCardExcerpt from "./TicketCardExcerpt";
 
 const TicketList = ({name, startDate, endDate}) => {
+  //Query string that will be passed to the API. Had to do this since it did not allow me to pass multiple parameters...
+  let searchBarQuery = `employeeId=${name}&dateStart=${startDate}&dateEnd=${endDate}`;
+
   //destructure data from EmployeeList Query
   const {
     data: queryData,
@@ -10,7 +13,7 @@ const TicketList = ({name, startDate, endDate}) => {
     isSuccess,
     isError,
     error
-  }  = useTicketsListQuery(name, startDate, endDate);
+  }  = useTicketsListQuery(searchBarQuery);
 
   //if statement that will return component depending on query status
   let content;

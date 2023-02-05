@@ -4,8 +4,8 @@ import { apiSlice } from "../../app/api/apiSlice";
 export const ticketsApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     ticketsList: builder.query({
-      query: (employeeId,dateStart,dateEnd) => ({
-        url:`api/ticket/?employeeId=${employeeId}&dateStart=${dateStart}$dateEnd=${dateEnd}`,
+      query: (searchBarQuery) => ({
+        url:`/api/ticket/?${searchBarQuery}`,
         method: 'GET',
         providesTags: ['employeelist']
       })
