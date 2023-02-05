@@ -4,8 +4,11 @@ import { useEmployeesListQuery } from '../employees/EmployeesApiSlice';
 import TicketList from './TicketListExcerpt';
 
 const TicketSearchBar = () => {
-  const [startDate, setStartDate] = useState(Date.now());
-  const [endDate, setEndDate] = useState(Date.now());
+  const initStartDate = new Date();
+  const initEndDate = new Date();
+
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [name, setName] = useState("" );
 
   const handleNameInput = (event) => {setName(event)};
@@ -62,15 +65,16 @@ const TicketSearchBar = () => {
 
       </Form>
     
-      <section className='ticketlist'>
+
+    
+    </div>
+    <section className='ticketlist'>
         <div className='container'>
           <div className="row row-cols-3 gy-5 offset-1">
             {list}
-          </div>
+          </div>  
         </div>
       </section>
-    
-    </div>
     <hr/>
     </Fragment>
     )

@@ -3,7 +3,7 @@ import TicketForm ; */
 import Nav from "../../components/NavAuth";
 import { Fragment } from 'react';
 //import TicketForm from "./TicketFormExcert";
-import TicketsList from "./TicketsExcert";
+import TicketsExcert from "./TicketsExcert";
 
 const Tickets = () => {
 
@@ -21,7 +21,7 @@ const Tickets = () => {
         </div>
       </div>
       {/* <TicketForm/> */}
-      <TicketsList/>
+      <TicketsExcert/>
 
     </Fragment>
   )
