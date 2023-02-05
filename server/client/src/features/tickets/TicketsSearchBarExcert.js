@@ -4,9 +4,6 @@ import { useEmployeesListQuery } from '../employees/EmployeesApiSlice';
 import TicketList from './TicketListExcerpt';
 
 const TicketSearchBar = () => {
-  const initStartDate = new Date();
-  const initEndDate = new Date();
-
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [name, setName] = useState("" );
