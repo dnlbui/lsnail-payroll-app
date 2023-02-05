@@ -22,7 +22,6 @@ const Tickets = () => {
       </div>
       {/* <TicketForm/> */}
       <TicketsExcert/>
-
     </Fragment>
   )
 }

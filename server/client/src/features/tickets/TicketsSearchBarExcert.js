@@ -8,12 +8,10 @@ const TicketSearchBar = () => {
   const [endDate, setEndDate] = useState('');
   const [name, setName] = useState("" );
 
-  const handleNameInput = (event) => {setName(event)};
-  const handleStartDateInput = async (value) => {setStartDate(value)};
-  const handleEndDateInput = async (value) => {setEndDate(value)};
+  const handleNameInput = (event) => {setName(event!==null?event:'')};
+  const handleStartDateInput = async (value) => {setStartDate(value!==null?value[0]:'')};
+  const handleEndDateInput = async (value) => {setEndDate(value!==null?value[1]:'')};
   
-
-
   //destructure data from EmployeeList Query
   const {
     data: queryData,
@@ -32,13 +30,12 @@ const TicketSearchBar = () => {
   }
   else if (isSuccess) {
     pickerData = queryData.map( element => ({ label: element.name, value: element._id }))
-    content = (<SelectPicker label="Employee" data={pickerData} onSelect={(value)=>handleNameInput(value)} style={{ width: 175 }} />)
+    content = (<SelectPicker label="Employee" data={pickerData} onChange={(value)=>handleNameInput(value)} style={{ width: 175 }} />)
     list = (<TicketList name={name} startDate={startDate} endDate={endDate}/>)
   }
   else if (isError) {
     content = <p>{error}</p>
   }
-
 
   return (
     <Fragment>
@@ -56,14 +53,16 @@ const TicketSearchBar = () => {
             defaultCalendarValue={[new Date(), new Date()]}
             hoverRange="week" 
             isoWeek ranges={[]}
-            onOk={(value)=>{ handleStartDateInput(value[0]); handleEndDateInput(value[1]);}}
+            onChange={(value)=>{ 
+              console.log(value)
+              handleStartDateInput(value); 
+              handleEndDateInput(value);
+            }
+          }
           />
         </Form.Group>
 
       </Form>
-    
-
-    
     </div>
     <section className='ticketlist'>
         <div className='container'>
