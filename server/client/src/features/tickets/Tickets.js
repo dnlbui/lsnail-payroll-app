@@ -4,6 +4,7 @@ import Nav from "../../components/NavAuth";
 import { Fragment } from 'react';
 //import TicketForm from "./TicketFormExcert";
 import TicketsExcert from "./TicketsExcert";
+import TicketForm from "./TicketFormExcert";
 
 const Tickets = () => {
 
@@ -11,6 +12,8 @@ const Tickets = () => {
     <Fragment>
       <Nav/>
       <br></br>
+
+      <TicketForm/>
       <div className="row row-cols-3 gy-10 offset-5">
         <div className="col ">
           <div className="jumbotron jumbotron-fluid ">
@@ -20,7 +23,6 @@ const Tickets = () => {
           </div>
         </div>
       </div>
-      {/* <TicketForm/> */}
       <TicketsExcert/>
     </Fragment>
   )
