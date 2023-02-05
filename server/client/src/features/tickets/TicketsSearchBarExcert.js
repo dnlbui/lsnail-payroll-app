@@ -53,7 +53,7 @@ const TicketSearchBar = () => {
           <DateRangePicker
             format="yyyy-MM-dd hh:mm aa"
             showMeridian
-            defaultCalendarValue={[new Date('2022-02-01 00:00:00'), new Date('2022-05-01 23:59:59')]}
+            defaultCalendarValue={[new Date(), new Date()]}
             hoverRange="week" 
             isoWeek ranges={[]}
             onOk={(value)=>{ handleStartDateInput(value[0]); handleEndDateInput(value[1]);}}
