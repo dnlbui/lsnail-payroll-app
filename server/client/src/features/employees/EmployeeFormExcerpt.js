@@ -1,22 +1,21 @@
-import React, {Fragment} from 'react';
-import { useRef, useState, useEffect } from 'react';
-import {useNavigate} from 'react-router-dom';
-
-import { useEmployeeFormMutation } from './EmployeesApiSlice';
+import React, {Fragment, useRef, useState, useEffect } from 'react';
+import { useRegisterEmployeeMutation, useEmployeesListQuery } from './EmployeesApiSlice';
 
 
-//Returns a card for each product
+
+//Submit employee form. Returns a form with input fields for name, email, and image.
 const EmployeeForm = () => {
   const userRef = useRef()
   const errRef = useRef()
   const [errMsg, setErrMsg] = useState('')
-  const navigate = useNavigate()
+  //const navigate = useNavigate()
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [image, setImage] = useState('')
 
-  const [employeeForm, { isLoading }] = useEmployeeFormMutation()
+  const [registerEmployee, { isLoading }] = useRegisterEmployeeMutation()
+  const { refetch } = useEmployeesListQuery();
 
   useEffect(()=> {
     userRef.current.focus()
@@ -24,24 +23,28 @@ const EmployeeForm = () => {
 
   useEffect(()=>{
     setErrMsg('')
-  },[email,image])
+  },[email,name])
   
   const handleSubmit = async(e) => {
     e.preventDefault()
-
+    
     try{
       //unwrap from redux toolkit cuz lets us use try catch block and response accordingly 
-      employeeForm({ email, image, name });
+      registerEmployee({ email, image, name });
+
+      //refetch employees list
+      refetch();
+
       //set local state to empty string
       setEmail('');
       setImage('');
       setName('');
-      navigate('/employees')
-    } catch (err) {
+    } 
+    catch (err) {
       if(!err?.response) {
         setErrMsg('No Server Response');
       } else if (err.originalStatus?.status === 400) {
-        setErrMsg('Missing Username or Image');
+        setErrMsg('Missing name or email input');
       } else if (err.originalStatus?.status === 401) {
         setErrMsg('Unauthorized');
       } else {
@@ -55,7 +58,6 @@ const EmployeeForm = () => {
   const handleImageInput = (e) => setImage(e.target.value);
   const handleNameInput = (e) => setName(e.target.value);
 
-
   const content = isLoading ? <h1>Loading...</h1> : (
     <Fragment>
     <div className='container'>
@@ -65,9 +67,12 @@ const EmployeeForm = () => {
         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
         <br></br>
       </div>
+
+      {/* <!-- Header Title --> */}
       <div className="row row-cols-2 gy-5 offset-4">
         <h1 className="text-center">Add Employee Form</h1>
       </div>
+
       <div className="row row-cols-2 gy-5 offset-4">
         <form onSubmit={handleSubmit}>
           {/* <!-- Name input --> */}
