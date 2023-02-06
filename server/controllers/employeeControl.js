@@ -97,13 +97,18 @@ exports.aggregateTickets = async (req, res) => {
   .group({ _id: employeeId, serviceTotal: {$sum: '$serviceTotal'}, tipTotal: {$sum: '$creditCardTip'}})
   .exec((err, tickets) => {
     console.log(tickets);
-    if(err) res.status(500).send({ error: 'Input fields' })
-    tickets[0].grossTotal = tickets[0].serviceTotal + tickets[0].tipTotal;
-    const employeeNet = tickets[0].grossTotal * 0.6;
-    tickets[0].EmployeePayCheck = employeeNet/2 + tickets[0].tipTotal;
-    tickets[0].EmployeePayCash  = employeeNet/2 - tickets[0].tipTotal;
-    tickets[0].netShopTotal = tickets[0].grossTotal - employeeNet;
-    console.log(tickets)
+    if(err) {
+      res.status(400).send('No files found')
+    }
+    if(tickets.length !== 0){
+      tickets[0].grossTotal = tickets[0].serviceTotal + tickets[0].tipTotal;
+      const employeeNet = tickets[0].grossTotal * 0.6;
+      tickets[0].EmployeePayCheck = employeeNet/2 + tickets[0].tipTotal;
+      tickets[0].EmployeePayCash  = employeeNet/2 - tickets[0].tipTotal;
+      tickets[0].netShopTotal = tickets[0].grossTotal - employeeNet;
+      console.log(tickets)
+    }
+
     res.send(tickets)
   })
 }
