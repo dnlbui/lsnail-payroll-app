@@ -11,12 +11,12 @@ const TicketForm = () => {
   const [errMsg, setErrMsg] = useState('');
 
 
-  const [name, setName] = useState('');
+  const [name, setName] = useState(''); // is actually employeeId
   const [date, setDate] = useState('');
   const [total, setTotal] = useState('');
   const [tip, setTip] = useState('');
 
-  const { refetch } = useTicketsListQuery(`employeeId=&dateStart=&dateEnd=`);
+  const { refetch } = useTicketsListQuery(`employeeId=${name}&dateStart=&dateEnd=`);
   const { 
     data: employees,
     isLoading: employeesLoading,
