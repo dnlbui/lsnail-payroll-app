@@ -54,7 +54,6 @@ const TicketSearchBar = () => {
             hoverRange="week" 
             isoWeek ranges={[]}
             onChange={(value)=>{ 
-              console.log(value)
               handleStartDateInput(value); 
               handleEndDateInput(value);
             }

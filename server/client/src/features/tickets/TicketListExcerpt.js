@@ -24,7 +24,6 @@ const TicketList = ({name, startDate, endDate}) => {
     content = queryData.map( element => {
       return(<TicketCardExcerpt key={element._id} element={element}/>)
     })
-    console.log(queryData);
   } 
   else if (isError) {
     content = <p>{error}</p>
