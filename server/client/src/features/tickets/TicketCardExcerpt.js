@@ -1,7 +1,7 @@
 //Returns a card for each product
 export default function TicketCard ({element}) {
   let {serviceDate, serviceTotal, creditCardTip, _id} = element;
-  let stringDate = new Date(serviceDate).toString().slice(0,15);
+  let stringDate = new Date(serviceDate).toUTCString().slice(0,16);
  
   return (
     <div className='col'>
