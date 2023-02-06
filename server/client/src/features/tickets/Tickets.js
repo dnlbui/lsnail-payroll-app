@@ -1,10 +1,8 @@
-/* import TicketsList ;
-import TicketForm ; */
+import './styles.css'
 import Nav from "../../components/NavAuth";
 import { Fragment } from 'react';
-//import TicketForm from "./TicketFormExcert";
-import TicketsExcert from "./TicketsExcert";
 import TicketForm from "./TicketFormExcert";
+import TicketsSearch from './TicketsSearchExcert';
 
 const Tickets = () => {
 
@@ -12,7 +10,6 @@ const Tickets = () => {
     <Fragment>
       <Nav/>
       <br></br>
-
       <TicketForm/>
       <div className="row row-cols-3 gy-10 offset-5">
         <div className="col ">
@@ -23,7 +20,9 @@ const Tickets = () => {
           </div>
         </div>
       </div>
-      <TicketsExcert/>
+      <TicketsSearch/>
+      <br></br>
+      <br></br>
     </Fragment>
   )
 }
