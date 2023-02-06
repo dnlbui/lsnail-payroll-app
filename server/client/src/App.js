@@ -8,6 +8,7 @@ import Register from './features/auth/Register'
 import Home from './features/home/Home'
 import Employees from './features/employees/Employees'
 import Tickets from './features/tickets/Tickets'
+import Payroll from './features/payroll/Payroll'
 
 
 
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="home" element={ <Home/> } />
             <Route path="employees" element={<Employees/>} />
             <Route path="tickets" element={<Tickets/>} />
+            <Route path="payroll" element={<Payroll/>} />
             {/* <Route path="employees" element={<Employees/>} /> */}
           </Route>
         </Route>
