@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import { useSelector } from 'react-redux';
 import { useRef, useState, useEffect } from 'react';
 
 import { useEmployeesListQuery } from '../employees/EmployeesApiSlice';
@@ -10,13 +11,18 @@ const TicketForm = () => {
   const errRef = useRef();
   const [errMsg, setErrMsg] = useState('');
 
+  const startDate = useSelector((state) => state.ticketList.startDate);
+  const endDate = useSelector((state) => state.ticketList.endDate);
+
 
   const [name, setName] = useState(''); // is actually employeeId
   const [date, setDate] = useState('');
   const [total, setTotal] = useState('');
   const [tip, setTip] = useState('');
 
-  const { refetch } = useTicketsListQuery(`employeeId=${name}&dateStart=&dateEnd=`);
+  let searchBarQuery = `employeeId=${name}&dateStart=${startDate}&dateEnd=${endDate}`;
+  const { refetch } = useTicketsListQuery(searchBarQuery);
+
   const { 
     data: employees,
     isLoading: employeesLoading,
@@ -56,7 +62,7 @@ const TicketForm = () => {
     try{
       //unwrap from redux toolkit cuz lets us use try catch block and response accordingly 
       registerTicket({ name, date, total, tip });
-
+      
       //refetch tickets list
       refetch();
 
@@ -100,7 +106,7 @@ const TicketForm = () => {
 
             {/* <!-- Name input--> */}
             <div className="form-outline mb-4">
-              <select defaultValue='' className="form-select" id="name" aria-label="Default select example" value={name} onChange={handleNameInput} required >
+              <select className="form-select" id="name" aria-label="Default select example" value={name} onChange={handleNameInput} required >
                 <option key='SelectDefault' value=''>Select Employee</option>
                 {content}
               </select>
