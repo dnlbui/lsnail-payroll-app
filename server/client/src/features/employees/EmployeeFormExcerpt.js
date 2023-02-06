@@ -2,13 +2,11 @@ import React, {Fragment, useRef, useState, useEffect } from 'react';
 import { useRegisterEmployeeMutation, useEmployeesListQuery } from './EmployeesApiSlice';
 
 
-
 //Submit employee form. Returns a form with input fields for name, email, and image.
 const EmployeeForm = () => {
   const userRef = useRef()
   const errRef = useRef()
   const [errMsg, setErrMsg] = useState('')
-  //const navigate = useNavigate()
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')

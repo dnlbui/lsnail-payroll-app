@@ -1,22 +1,22 @@
 import React, {Fragment} from 'react';
 import { useRef, useState, useEffect } from 'react';
-//import {useNavigate} from 'react-router-dom'; 
 
 import { useEmployeesListQuery } from '../employees/EmployeesApiSlice';
-import { useRegisterTicketMutation } from './TicketsApiSlice';
+import { useRegisterTicketMutation, useTicketsListQuery } from './TicketsApiSlice';
 
 //Submit ticket form. Returns a form with input fields for date, total, and tip.
 const TicketForm = () => {
   const userRef = useRef();
   const errRef = useRef();
   const [errMsg, setErrMsg] = useState('');
-  //const navigate = useNavigate()
+
 
   const [name, setName] = useState('');
   const [date, setDate] = useState('');
   const [total, setTotal] = useState('');
   const [tip, setTip] = useState('');
 
+  const { refetch } = useTicketsListQuery(`employeeId=&dateStart=&dateEnd=`);
   const { 
     data: employees,
     isLoading: employeesLoading,
@@ -56,11 +56,15 @@ const TicketForm = () => {
     try{
       //unwrap from redux toolkit cuz lets us use try catch block and response accordingly 
       registerTicket({ name, date, total, tip });
+
+      //refetch tickets list
+      refetch();
+
       //set local state to empty string
       setDate('');
       setTotal('');
       setTip('');
-      //navigate('/tickets')
+
     } catch (err) {
       if(!err?.response) {
         setErrMsg('No Server Response');
