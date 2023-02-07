@@ -80,7 +80,7 @@ const Login = () => {
 
             {/* <!-- Password input --> */}
             <div className="form-outline mb-4">
-              <input type="password" id="password" onChange={handlepasswordInput} value={password} required className="form-control" />
+              <input autoComplete="on" type="password" id="password" onChange={handlepasswordInput} value={password} required className="form-control" />
               <label className="form-label" htmlFor="form2Example2">Password</label>
             </div>
 
