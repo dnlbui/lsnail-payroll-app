@@ -2,6 +2,7 @@ const Authentication     = require('./controllers/authentication');
 const passportService    = require('./services/passport');
 const passport           = require('passport');
 const EmployeeControl    = require('./controllers/employeeControl')
+const InvoiceControl     = require('./controllers/invoiceControl')
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY  || require('./config/keys').STRIPE_SECRET_KEY);         
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET || require('./config/keys').STRIPE_WEBHOOK_SECRET;
@@ -36,45 +37,45 @@ module.exports = function(app) {
   
 
   //route that creates a product 
-  
+  app.post('/api/sendinvoice', requireAuth, InvoiceControl.sendInvoice)
   //creates a price for the product
   
   //creates a customer while saving them in mongoDB
 
-  //create webhook for stripe
-  app.post('/webhook', express.raw({type: 'application/json'}), (request, response) => {
-    let event = request.body;
-    // Only verify the event if you have an endpoint secret defined.
-    // Otherwise use the basic event deserialized with JSON.parse
-    if (endpointSecret) {
-      // Get the signature sent by Stripe
-      const signature = request.headers['stripe-signature'];
-      try {
-        event = stripe.webhooks.constructEvent(
-          request.body,
-          signature,
-          endpointSecret
-        );
-      } catch (err) {
-        console.log(`⚠️  Webhook signature verification failed.`, err.message);
-        return response.sendStatus(400);
-      }
-    }
+  // //create webhook for stripe
+  // app.post('/webhook', express.raw({type: 'application/json'}), (request, response) => {
+  //   let event = request.body;
+  //   // Only verify the event if you have an endpoint secret defined.
+  //   // Otherwise use the basic event deserialized with JSON.parse
+  //   if (endpointSecret) {
+  //     // Get the signature sent by Stripe
+  //     const signature = request.headers['stripe-signature'];
+  //     try {
+  //       event = stripe.webhooks.constructEvent(
+  //         request.body,
+  //         signature,
+  //         endpointSecret
+  //       );
+  //     } catch (err) {
+  //       console.log(`⚠️  Webhook signature verification failed.`, err.message);
+  //       return response.sendStatus(400);
+  //     }
+  //   }
   
-    // Handle the event
-    switch (event.type) {
-    case 'invoice.payment_failed':
-      const invoice = event.data.object;
-      // Then define and call a method to handle the failed payment of an Invoice.
-      // handleFailedInvoice(invoice);
-      break;
-      default:
-        // Unexpected event type
-        console.log(`Unhandled event type ${event.type}.`);
-    }
+  //   // Handle the event
+  //   switch (event.type) {
+  //   case 'invoice.payment_failed':
+  //     const invoice = event.data.object;
+  //     // Then define and call a method to handle the failed payment of an Invoice.
+  //     // handleFailedInvoice(invoice);
+  //     break;
+  //     default:
+  //       // Unexpected event type
+  //       console.log(`Unhandled event type ${event.type}.`);
+  //   }
   
-    // Return a 200 response to acknowledge receipt of the event
-    response.send();
-  });
+  //   // Return a 200 response to acknowledge receipt of the event
+  //   response.send();
+  // });
   
 };
