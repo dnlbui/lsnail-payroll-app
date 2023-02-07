@@ -5,7 +5,7 @@ const { Customer } = require('../models/customer');
 
 exports.sendInvoice = function (req, res) {
 
-  // stript processing key
+  // stript processing key ******************need to hide this in env file...
   const stripe = require('stripe')('sk_test_51MYtYyBxFn9jWOFEFIbu3aWCdeuTpNCnPC0cTaEbydlPxGkLoUX5FS11kmBtAmDCA5R8F2PbpYZsZb3Ca8sNp4dc003B6yNGb6');
 
   //need to grab email, price, and name from req.body...............
@@ -23,7 +23,7 @@ exports.sendInvoice = function (req, res) {
 
     if(data.length !== 0) {
       console.log("customer found");
-      console.log(data[0].stripeId);
+
       // Create an Invoice
       invoice = await stripe.invoices.create({
         customer: data[0].stripeId,
@@ -39,8 +39,8 @@ exports.sendInvoice = function (req, res) {
       });
       // Send the Invoice
       await stripe.invoices.sendInvoice(invoice.id);
-
-      res.end();
+      console.log(invoice)
+      res.send({invoiceId: invoice.id});
     } 
     
     else if(data.length === 0) {
@@ -76,7 +76,7 @@ exports.sendInvoice = function (req, res) {
         await stripe.invoices.sendInvoice(invoice.id);
 
         //************************************************ */
-        res.end();
+        res.send({invoiceId: invoice.id});
         //need to figure out error handling... not able to set header here
       });
       res.end();
