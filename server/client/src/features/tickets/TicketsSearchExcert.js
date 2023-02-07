@@ -12,8 +12,13 @@ const TicketSearchBar = () => {
 
   // fxns handling input changes
   const handleNameInput = (event) => {dispatch(setName(event!==null?event:''))};
-  const handleStartDateInput = async (value) => {dispatch(setStartDate(value!==null?value[0]:''))};
-  const handleEndDateInput = async (value) => {dispatch(setEndDate(value!==null?value[1]:''))};
+  const handleStartDateInput = async (value) => {
+    let valueStartDate = value[0];
+    dispatch(setStartDate(value!==null || typeof value === Object ?valueStartDate:''))};
+  const handleEndDateInput = async (value) => {
+    let valueEndDate = value[1];
+    //parseISO(new Date(value[1].toString()).toISOString());
+    dispatch(setEndDate(value!==null?valueEndDate:''))};
   
   //destructure data from EmployeeList Query
   const {
