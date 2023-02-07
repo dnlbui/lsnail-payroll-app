@@ -1,8 +1,6 @@
 import Nav from "../../components/NavAuth";
 import { Fragment } from 'react';
 import PayrollBarExcerpt from "./PayrollFormExcerpt";
-//import PayrollCardRowExcerpt from "./PayrollCardRowExcerpt";
-
 
 const Payroll = () => {
 

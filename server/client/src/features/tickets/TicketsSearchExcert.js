@@ -4,6 +4,7 @@ import { Fragment } from 'react';
 import { useEmployeesListQuery } from '../employees/EmployeesApiSlice';
 import TicketListExcerpt from './TicketListExcerpt';
 import { setStartDate, setEndDate, setName } from './TicketListSlice';
+import { startOfDay, endOfDay, parseISO } from 'date-fns';
 
 const TicketSearchBar = () => {
   //dispatch for redux toolkit
@@ -49,10 +50,9 @@ const TicketSearchBar = () => {
 
           <Form.Group controlId="date-7">
             <DateRangePicker
+              cleanable={false}
               format="yyyy-MM-dd hh:mm aa"
-              showMeridian
-              defaultCalendarValue={[new Date(), new Date()]}
-              hoverRange="week" 
+              defaultCalendarValue={[startOfDay(parseISO(new Date().toISOString())), endOfDay(parseISO(new Date().toISOString()))]}
               isoWeek ranges={[]}
               onChange={(value)=>{ 
                 handleStartDateInput(value); 

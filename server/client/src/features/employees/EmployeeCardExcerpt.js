@@ -11,7 +11,7 @@ export default function EmployeeCardExcerpt ({element}) {
         <ul className="list-group list-group-flush">
           <li className="list-group-item">Name: {name}</li>
         </ul>
-        <button type="button" value={_id} class="btn btn-danger">Delete</button>
+        <button type="button" value={_id} className="btn btn-danger">Delete</button>
       </div>
     </div>
   )
