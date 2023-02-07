@@ -10,6 +10,7 @@ export const store = configureStore({
     auth: authReducer,
     ticketList: ticketListReducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
+  //added serializableCheck: false to get rid of error message
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({serializableCheck: false,}).concat(apiSlice.middleware),
   devTools: true //turn off during PRODUCTION RUN
 });
