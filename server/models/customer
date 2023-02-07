@@ -1,0 +1,8 @@
+const mongoose = require('mongoose');
+const Schema   = mongoose.Schema;
+
+// Define model for an customer
+const CustomerSchema = new Schema({
+  "name"    : {type: String, lowercase: true},
+  "email"   : { type: String, unique: true, lowercase: true },
+})

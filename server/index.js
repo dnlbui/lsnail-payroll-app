@@ -6,6 +6,7 @@ const router = require('./router');
 const cors = require('cors');
 const keys = require('./config/keys');
 
+
 const app = express();
 
 mongoose.set("strictQuery", false);
