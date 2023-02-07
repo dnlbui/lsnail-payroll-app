@@ -37,7 +37,7 @@ exports.removeEmployee = function (req, res) {
 // Add/Push ticket id into the employee ticket array while saving a new ticket
 exports.createNewTicket = function (req, res) {
   const employeeId = req.params.employee;
-  let foundEmployee = Employee.find({_id: employeeId}).exec((err,data) => {console.log(data)});
+  let foundEmployee = Employee.find({_id: employeeId}).exec();
 
   let newTicket = new Ticket({
     "serviceDate"   : req.body.date,
@@ -46,7 +46,6 @@ exports.createNewTicket = function (req, res) {
   });
 
   Employee.findOne({_id: employeeId}, (err,data) => {
-    //console.log(data);
     newTicket.employee.push(data);
     newTicket.save();
   });
@@ -96,17 +95,15 @@ exports.aggregateTickets = async (req, res) => {
   Ticket.aggregate([{$match: { employee:  ObjectId(employeeId), "serviceDate": { "$gt": new Date(dateStart), "$lt" : new Date(dateEnd) } }}])
   .group({ _id: employeeId, serviceTotal: {$sum: '$serviceTotal'}, tipTotal: {$sum: '$creditCardTip'}})
   .exec((err, tickets) => {
-    console.log(tickets);
     if(err) {
       res.status(400).send('No files found')
     }
     if(tickets.length !== 0){
       tickets[0].grossTotal = tickets[0].serviceTotal + tickets[0].tipTotal;
       const employeeNet = tickets[0].grossTotal * 0.6;
-      tickets[0].EmployeePayCheck = employeeNet/2 + tickets[0].tipTotal;
-      tickets[0].EmployeePayCash  = employeeNet/2 - tickets[0].tipTotal;
-      tickets[0].netShopTotal = tickets[0].grossTotal - employeeNet;
-      console.log(tickets)
+      tickets[0].EmployeePayCheck = (employeeNet/2 + tickets[0].tipTotal).toFixed(2);
+      tickets[0].EmployeePayCash  = (employeeNet/2 - tickets[0].tipTotal).toFixed(2);
+      tickets[0].netShopTotal = (tickets[0].grossTotal - employeeNet).toFixed(2);
     }
 
     res.send(tickets)
