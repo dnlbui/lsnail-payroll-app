@@ -4,8 +4,12 @@ import { useRef, useState } from 'react';
 
 import { useEmployeesListQuery } from '../employees/EmployeesApiSlice';
 import {useGetPayrollQuery} from './PayrollApiSlice';
+import { PayrollCard } from './PayrollCardExcerpt';
+
+import { startOfDay, endOfDay, parseISO } from 'date-fns';
 
 const PayrollForm = () => {
+  const {afterToday} = DateRangePicker;
   const userRef = useRef();
   const errRef = useRef();
   const [errMsg] = useState('');
@@ -51,34 +55,14 @@ const PayrollForm = () => {
     error,
   }  = useGetPayrollQuery(payrollQueryArgs,{skip: !name || !startDate || !endDate})
 
-  let content
+  let content = (<div></div>)
   if(isLoading) {
     return(
       <div>Loading...</div>
     )
   }
   else if(isSuccess) {
-
-    content = data.map((element) => (
-      <div className='col'>
-        <div className="card" value={element._id} style={{width: 400}}>
-          <div className="card-body">
-            <h5 className="card-title text-center">Employee's Calculated Payroll</h5>
-            <hr/>
-            <h5 className="card-title text-center">Service Total:</h5>
-            <h5 className="card-title text-center">${element.serviceTotal}</h5>
-            <h5 className="card-title text-center">Tip Total:</h5>
-            <h5 className="card-title text-center">${element.tipTotal}</h5>
-            <h5 className="card-title text-center">Gross Total:</h5>
-            <h5 className="card-title text-center">${element.grossTotal}</h5>
-            <h5 className="card-title text-center">Employee Paycheck Amount:</h5>
-            <h5 className="card-title text-center">${element.EmployeePayCheck}</h5>
-            <h5 className="card-title text-center">Employee Cash Amount:</h5>
-            <h5 className="card-title text-center">${element.EmployeePayCash}</h5>
-          </div>
-        </div>
-      </div>
-    ))
+    content = data.length === 0 ? <p>No data found</p> : <PayrollCard data={data} />
   }
   else if(isError) {
     content = (
@@ -87,7 +71,6 @@ const PayrollForm = () => {
       </div>
     )
   }
-
 
   return (
     <Fragment>
@@ -115,19 +98,24 @@ const PayrollForm = () => {
             {/* <!-- Date input--> */}
             <div className="form-outline mb-4">
               <DateRangePicker
+                className={"DateRangePicker"}
+                ref={userRef}
+                oneTap 
+                disabledDate={afterToday()}
+                cleanable={false}
                 format="yyyy-MM-dd hh:mm aa"
-                showMeridian
-                defaultCalendarValue={[new Date(), new Date()]}
+                placeholder="Select Week"
+                defaultCalendarValue={[startOfDay(parseISO(new Date().toISOString())), endOfDay(parseISO(new Date().toISOString()))]}
+                isoWeek 
+                ranges={[]}
                 hoverRange="week" 
-                isoWeek ranges={[]}
-                ref={userRef} 
-                onOk={(value)=>{ 
+                onChange={(value)=>{ 
                     handleStartDateInput(value); 
                     handleEndDateInput(value);
                   }
                 }
               />
-              <label className="form-label" htmlFor="DateInput">Service Date</label>
+              <div><label className="form-label" htmlFor="DateInput">Service Date</label></div>
             </div>
           </form>
         </div>
