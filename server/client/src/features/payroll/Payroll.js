@@ -18,7 +18,6 @@ const Payroll = () => {
         </div>
       </div>
       <PayrollBarExcerpt/>
-      {/* <PayrollCardRowExcerpt/> */}
     </Fragment>
 
   )

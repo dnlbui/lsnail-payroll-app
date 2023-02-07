@@ -26,6 +26,9 @@ const Nav = () => {
               <Link to="/employees" className="nav-link active" aria-current="page">Employees</Link>
             </li>
             <li className="nav-item">
+              <Link to="/invoice" className="nav-link active" aria-current="page">Invoice</Link>
+            </li>
+            <li className="nav-item">
               <a className="nav-link" href="/">Logout</a>
             </li>
           </ul>
