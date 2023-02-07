@@ -14,7 +14,7 @@ export default function TicketCard ({element}) {
           <h5 className="card-title text-center">Credit CardTip:</h5>
           <h5 className="card-title text-center">${creditCardTip}</h5>
         </div>
-        <button type="button" value={_id} class="btn btn-danger">Delete</button>
+        <button type="button" value={_id} className="btn btn-danger">Delete</button>
       </div>
     </div>
   )

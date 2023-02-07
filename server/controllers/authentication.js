@@ -3,7 +3,6 @@ const {Employee} = require('../models/employee');
 const keys       = require('../config/dev');
 
 function tokenForEmployee(employee) {
-  console.log(employee +" Inside token for employee in authentication file")
   return jwt.encode(
     {
       sub: employee.id,
@@ -39,8 +38,6 @@ exports.signup = function(req, res, next) {
   const email = req.body.email;
   const password = req.body.password;
   const name = req.body.name;
-
-  console.log(email);
 
   if(!email || !password || !name) {
     return res.status(422).send({ error: 'You must provide an name, email, and password'});

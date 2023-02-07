@@ -10,7 +10,13 @@ exports.createNewEmployee = function (req, res) {
   "image"   : req.body.image,
   })
 
-  newEmployee.save();
+
+
+  newEmployee.save((err, data) => {
+    //************************************************ */
+    res.end();
+    //need to figure out error handling... not able to set header here
+    });
   res.end();
 }
 
