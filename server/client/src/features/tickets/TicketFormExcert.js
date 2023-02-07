@@ -33,7 +33,7 @@ const TicketForm = () => {
 
   let content
   if (employeesLoading) {
-    content = <p>Loading...</p>
+    content = <Fragment></Fragment>
   }
   else if (employeesIsSuccess) {
     content = employees.map((employee) => (
@@ -41,7 +41,7 @@ const TicketForm = () => {
     ))
   }
   else if (employeesIsError) {
-    content = <p>{employeesError}</p>
+    content = <Fragment></Fragment>
   } 
 
   const [registerTicket, { isLoading }] = useRegisterTicketMutation();
@@ -115,7 +115,7 @@ const TicketForm = () => {
 
             {/* <!-- Date input--> */}
             <div className="form-outline mb-4">
-              <input type="date" id="date" className="form-control" value={date} onChange={handleDateInput} ref={userRef} required/>
+              <input type="datetime-local" id="date" className="form-control" value={date} onChange={handleDateInput} ref={userRef} required/>
               <label className="form-label" htmlFor="DateInput">Service Date</label>
             </div>
 
