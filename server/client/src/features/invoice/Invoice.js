@@ -19,6 +19,7 @@ const Invoice = () => {
         </div>
         <InvoiceFormExerpt/>
       </Fragment>
-  
     )
   }
+
+export default Invoice;

@@ -40,7 +40,7 @@ exports.sendInvoice = function (req, res) {
       // Send the Invoice
       await stripe.invoices.sendInvoice(invoice.id);
       console.log(invoice)
-      res.send({invoiceId: invoice.id});
+      res.end();
     } 
     
     else if(data.length === 0) {
@@ -76,7 +76,7 @@ exports.sendInvoice = function (req, res) {
         await stripe.invoices.sendInvoice(invoice.id);
 
         //************************************************ */
-        res.send({invoiceId: invoice.id});
+        res.end();
         //need to figure out error handling... not able to set header here
       });
       res.end();
