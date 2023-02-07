@@ -10,8 +10,6 @@ exports.createNewEmployee = function (req, res) {
   "image"   : req.body.image,
   })
 
-
-
   newEmployee.save((err, data) => {
     //************************************************ */
     res.end();
