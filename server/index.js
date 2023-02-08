@@ -12,7 +12,7 @@ const app = express();
 mongoose.set("strictQuery", false);
 
 //*****NEED TO CHANGE THIS ONCE GETTING EVERYTHING COMPLETED (keys.MONGODB_URI) */
-mongoose.connect("mongodb://127.0.0.1:27017/lsnails-db", {
+mongoose.connect("keys.MONGODB_URI", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
