@@ -13,7 +13,6 @@ const EmployeeForm = () => {
   const [image, setImage] = useState('')
 
   const [registerEmployee, { isLoading }] = useRegisterEmployeeMutation()
-  const { refetch } = useEmployeesListQuery();
 
   useEffect(()=> {
     userRef.current.focus()
@@ -24,14 +23,12 @@ const EmployeeForm = () => {
   },[email,name])
   
   const handleSubmit = async(e) => {
+    //prevent page refresh
     e.preventDefault()
-    
+
     try{
       //unwrap from redux toolkit cuz lets us use try catch block and response accordingly 
       registerEmployee({ email, image, name });
-
-      //refetch employees list
-      refetch();
 
       //set local state to empty string
       setEmail('');
@@ -54,24 +51,19 @@ const EmployeeForm = () => {
 
   const handleEmailInput = (e) => setEmail(e.target.value);
   const handleImageInput = (e) => setImage(e.target.value);
-  const handleNameInput = (e) => setName(e.target.value);
+  const handleNameInput  = (e) => setName(e.target.value);
 
   const content = isLoading ? <h1>Loading...</h1> : (
     <Fragment>
-    <div className='container'>
+    
     <section className='register'>
-      <div className="row row-cols-2 gy-10 offset-4">
-        <br></br>
-        <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-        <br></br>
-      </div>
 
       {/* <!-- Header Title --> */}
-      <div className="row row-cols-2 gy-5 offset-4">
+      <div className="col gy-5 ">
         <h1 className="text-center">Add Employee Form</h1>
       </div>
 
-      <div className="row row-cols-2 gy-5 offset-4">
+      <div className="col gy-5 ">
         <form onSubmit={handleSubmit}>
           {/* <!-- Name input --> */}
           <div className="form-outline mb-4">
@@ -95,9 +87,14 @@ const EmployeeForm = () => {
           <button type="submit" className="btn btn-primary btn-block mb-4">Add New Employee</button>
         </form>
       </div>
+
+      <div className="col gy-10 ">
+        <br></br>
+        <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+        <br></br>
+      </div>
     </section>
     <hr/>
-    </div>
     </Fragment>
   )
 

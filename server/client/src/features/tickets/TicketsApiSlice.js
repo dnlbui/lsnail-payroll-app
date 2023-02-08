@@ -7,17 +7,18 @@ export const ticketsApiSlice = apiSlice.injectEndpoints({
       query: (searchBarQuery) => ({
         url:`/api/ticket/?${searchBarQuery}`,
         method: 'GET',
-        providesTags: ['GetTicket']
+        
       }),
-      tagTypes: ['GetTicket']
+      providesTags: ['GetTicket']
     }),
     registerTicket: builder.mutation({
       query: (credentials) => ({
         url:`api/ticket/${credentials.name}`,
         method: 'POST',
         body: {...credentials},
-        invalidatesTags: ()=>['GetTicket']
-      })
+        
+      }),
+      invalidatesTags: ['GetTicket']
     })
   })
 })

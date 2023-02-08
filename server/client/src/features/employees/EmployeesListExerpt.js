@@ -14,6 +14,8 @@ const EmployeesList = () => {
     error
   }  = useEmployeesListQuery();
 
+  const { refetch } = useEmployeesListQuery();
+
   //if statement that will return component depending on query status
   let content;
   if(isLoading) {
@@ -27,20 +29,27 @@ const EmployeesList = () => {
   else if (isError) {
     content = <p>{error}</p>
   }
+
+  const handleClick = async (e) => {
+    refetch();
+  }
+
   return (
     <Fragment>
-      <div className="row row-cols-3 gy-10 offset-5">
+      <div className="row gy-10 ">
         <div className="col ">
           <div className="jumbotron jumbotron-fluid ">
             <div className="container">
               <h1 className="display-8 text-center">Employee List</h1>
+              <input className="btn btn-primary" type="reset" value="Refresh List" onClick={handleClick}></input>
             </div>
           </div>
         </div>
       </div>
+      <br></br>
       <section className='employeelist'>
         <div className='container'>
-          <div className="row row-cols-3 gy-5 offset-1">
+          <div className="row row-cols-md-3 row-cols-1 gy-5">
             {content}
           </div>
         </div>
