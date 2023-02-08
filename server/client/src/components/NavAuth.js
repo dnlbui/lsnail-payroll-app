@@ -9,7 +9,7 @@ const Nav = () => {
 
 
   return (
-    <nav className="navbar navbar-dark navbar-expand-lg bg-primary">
+    <nav className="navbar navbar-dark bg-dark navbar-expand-lg bg-primary">
       <div className="container-fluid">
         <Link to="/home" className="navbar-brand"  aria-current="page">Lone Star Nails</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,16 +21,16 @@ const Nav = () => {
               <Link to="/home" className="nav-link active" aria-current="page">Home</Link>
             </li>
             <li className="nav-item">
-              <Link to="/tickets" className="nav-link active" aria-current="page">Tickets</Link>
+              <Link to="/tickets" className="nav-link" >Tickets</Link>
             </li>
             <li className="nav-item">
-              <Link to="/payroll" className="nav-link active" aria-current="page">Payroll</Link>
+              <Link to="/payroll" className="nav-link" >Payroll</Link>
             </li>
             <li className="nav-item">
-              <Link to="/employees" className="nav-link active" aria-current="page">Employees</Link>
+              <Link to="/employees" className="nav-link">Employees</Link>
             </li>
             <li className="nav-item">
-              <Link to="/invoice" className="nav-link active" aria-current="page">Invoice</Link>
+              <Link to="/invoice" className="nav-link" >Invoice</Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" onClick={()=>dispatch(logOut)}href="/">Logout</a>
