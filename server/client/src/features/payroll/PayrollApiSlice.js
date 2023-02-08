@@ -6,9 +6,8 @@ export const payrollApiSlice = apiSlice.injectEndpoints({
       query: (PayrollBarQuery) => ({
         url:`/api/ticket/aggregation/?${PayrollBarQuery}`,
         method: 'GET',
-        providesTags: ['GetPayroll']
       }),
-      tagTypes: ['GetPayroll']
+      providesTags: ['GetPayroll']
     }),
   })
 });

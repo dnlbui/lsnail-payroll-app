@@ -74,60 +74,79 @@ const PayrollForm = () => {
 
   return (
     <Fragment>
-      <div className='container'>
+      <div className='col'>
+
+        <div className="row row-cols-3 gy-10">
+          <div className="col ">
+            <div className="jumbotron jumbotron-fluid ">
+              <div className="container">
+                <h1 className="display-8 text-center">Payroll</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <section className='registerticket'>
-          <div className='row row-cols-2 gy-10 offset-4'>
+          <div className='row'>
             <br></br>
             <p ref={errRef} className={errMsg ? 'error' : 'offscreen'} aria-live="assertive">{errMsg}</p>
-            
           </div>
-        <div className='row row-cols-2 gy-5 offset-4'>
-          
-          <form>
-          <p>Select an employee and date range to calculate payroll</p>
-          <br></br>
-            {/* <!-- Name input--> */}
-            <div className="form-outline mb-4">
-              <select className="form-select" id="name" aria-label="Default select example" value={name} onChange={handleNameInput} required >
-                <option key='SelectDefault' value=''>Select Employee</option>
-                {optionsContent}
-              </select>
-              <label className="form-label" htmlFor="NameInput">Name</label>
-            </div>
 
-            {/* <!-- Date input--> */}
-            <div className="form-outline mb-4">
-              <DateRangePicker
-                className={"DateRangePicker"}
-                ref={userRef}
-                oneTap 
-                disabledDate={afterToday()}
-                cleanable={false}
-                format="yyyy-MM-dd hh:mm aa"
-                placeholder="Select Week"
-                defaultCalendarValue={[startOfDay(parseISO(new Date().toISOString())), endOfDay(parseISO(new Date().toISOString()))]}
-                isoWeek 
-                ranges={[]}
-                hoverRange="week" 
-                onChange={(value)=>{ 
-                    handleStartDateInput(value); 
-                    handleEndDateInput(value);
+          <div className='row'>
+            <form>
+              <p>Select an employee and date range to calculate payroll</p>
+              <br></br>
+              <div className="row">
+              <div className="col">
+              
+              {/* <!-- Name input--> */}
+              <div className="form-outline mb-4">
+                <select className="form-select" id="name" aria-label="Default select example" value={name} onChange={handleNameInput} required >
+                  <option key='SelectDefault' value=''>Select Employee</option>
+                  {optionsContent}
+                </select>
+                <label className="form-label" htmlFor="NameInput">Name</label>
+              </div>
+              </div>
+              <div className="col">
+              {/* <!-- Date input--> */}
+              <div className="form-outline mb-4">
+                <DateRangePicker
+                  className={"DateRangePicker"}
+                  ref={userRef}
+                  oneTap 
+                  disabledDate={afterToday()}
+                  cleanable={false}
+                  format="yyyy-MM-dd hh:mm aa"
+                  placeholder="Select Week"
+                  defaultCalendarValue={[startOfDay(parseISO(new Date().toISOString())), endOfDay(parseISO(new Date().toISOString()))]}
+                  isoWeek 
+                  ranges={[]}
+                  hoverRange="week" 
+                  onChange={(value)=>{ 
+                      handleStartDateInput(value); 
+                      handleEndDateInput(value);
+                    }
                   }
-                }
-              />
-              <div><label className="form-label" htmlFor="DateInput">Service Date</label></div>
-            </div>
-          </form>
-        </div>
-      </section>
-      <section className='ticketlist'>
-        <div className='container'>
-          <div className="row row-cols-3 gy-5 justify-content-center">
-            {content}
+                />
+                <div><label className="form-label" htmlFor="DateInput">Service Date</label></div>
+              </div>
+              </div>
+              </div>
+            </form>
           </div>
-        </div>
-      </section>
-      <hr/>
+        </section>
+        <hr/>
+      </div>
+
+      <div className='col'>
+        <section className='ticketlist'>
+          <div className='container'>
+            <div className="row justify-content-center">
+              {content}
+            </div>
+          </div>
+        </section>
       </div>
     </Fragment>
   )

@@ -8,16 +8,12 @@ const Payroll = () => {
     <Fragment>
       <Nav/>
       <br></br>
-      <div className="row row-cols-3 gy-10 offset-5">
-        <div className="col ">
-          <div className="jumbotron jumbotron-fluid ">
-            <div className="container">
-              <h1 className="display-8 text-center">Payroll</h1>
-            </div>
-          </div>
+
+      <div className="container">
+        <div className="row row-cols-xl-2 row-cols-md-2">
+         <PayrollBarExcerpt/>
         </div>
       </div>
-      <PayrollBarExcerpt/>
     </Fragment>
 
   )
