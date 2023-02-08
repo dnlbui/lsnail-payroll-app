@@ -5,7 +5,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     employeesList: builder.query({ 
       query: () => ({
-        url:'api/employeelist',
+        url:'/api/employeelist',
         method: 'GET',
         providesTags: ['GetEmployee'] 
       }),
