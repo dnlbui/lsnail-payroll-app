@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { logOut } from "../features/auth/authSlice";
+import { useDispatch } from "react-redux";
 
 const Nav = () => {
+  const dispatch = useDispatch();
+
 
 
   return (
@@ -29,7 +33,7 @@ const Nav = () => {
               <Link to="/invoice" className="nav-link active" aria-current="page">Invoice</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">Logout</a>
+              <a className="nav-link" onClick={()=>dispatch(logOut)}href="/">Logout</a>
             </li>
           </ul>
         </div>
