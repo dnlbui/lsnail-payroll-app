@@ -1,9 +1,9 @@
 import React, {Fragment} from 'react';
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
 import { useRef, useState, useEffect } from 'react';
 
 import { useEmployeesListQuery } from '../employees/EmployeesApiSlice';
-import { useRegisterTicketMutation, useTicketsListQuery } from './TicketsApiSlice';
+import { useRegisterTicketMutation } from './TicketsApiSlice';
 
 //Submit ticket form. Returns a form with input fields for date, total, and tip.
 const TicketForm = () => {
@@ -11,8 +11,8 @@ const TicketForm = () => {
   const errRef = useRef();
   const [errMsg, setErrMsg] = useState('');
 
-  const startDate = useSelector((state) => state.ticketList.startDate);
-  const endDate = useSelector((state) => state.ticketList.endDate);
+  //const startDate = useSelector((state) => state.ticketList.startDate);
+  //const endDate = useSelector((state) => state.ticketList.endDate);
 
 
   const [name, setName] = useState(''); // is actually employeeId
@@ -20,8 +20,8 @@ const TicketForm = () => {
   const [total, setTotal] = useState('');
   const [tip, setTip] = useState('');
 
-  let searchBarQuery = `employeeId=${name}&dateStart=${startDate}&dateEnd=${endDate}`;
-  const { refetch } = useTicketsListQuery(searchBarQuery);
+  // let searchBarQuery = `employeeId=${name}&dateStart=${startDate}&dateEnd=${endDate}`;
+  //const { refetch } = useTicketsListQuery(searchBarQuery);
 
   const { 
     data: employees,
@@ -64,7 +64,7 @@ const TicketForm = () => {
       registerTicket({ name, date, total, tip });
       
       //refetch tickets list
-      refetch();
+      //refetch();
 
       //set local state to empty string
       setDate('');
@@ -92,18 +92,15 @@ const TicketForm = () => {
 
   const renderTicketForm = isLoading ? <h1>Loading...</h1> : (
     <Fragment>
-      <div className='container'>
-        <section className='registerticket'>
-          <div className='row row-cols-2 gy-10 offset-4'>
-            <br></br>
-            <p ref={errRef} className={errMsg ? 'error' : 'offscreen'} aria-live="assertive">{errMsg}</p>
-          </div>
-        <div className='row row-cols-2 gy-5 offset-4'>
+      <section className='registerticket'>
+
+        <div className='row'>
           <h1 className='text-center'>Add Ticket Form</h1>
         </div>
-        <div className='row row-cols-2 gy-5 offset-4'>
-          <form onSubmit={handleSubmit}>
 
+        <div className='row gy-5'>
+         
+          <form onSubmit={handleSubmit}>
             {/* <!-- Name input--> */}
             <div className="form-outline mb-4">
               <select className="form-select" id="name" aria-label="Default select example" value={name} onChange={handleNameInput} required >
@@ -134,10 +131,15 @@ const TicketForm = () => {
             {/* <!-- Submit button --> */}
             <button type="submit" className="btn btn-primary btn-block mb-4">Submit</button>
           </form>
+
+          <div className='row'>
+            <br></br>
+            <p ref={errRef} className={errMsg ? 'error' : 'offscreen'} aria-live="assertive">{errMsg}</p>
+          </div>
+
         </div>
       </section>
       <hr/>
-      </div>
     </Fragment>
   )
 
