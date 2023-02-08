@@ -8,8 +8,16 @@ const Employees = () => {
   return (
     <Fragment>
       <Nav/>
-      <EmployeeForm/>
-      <EmployeesList/>
+      <div className='container'>
+        <div className="row row-cols-2 gy-10">
+          <div className="col ">
+            <EmployeeForm/>
+          </div>
+          <div className="col ">
+            <EmployeesList/>
+          </div>
+        </div>
+      </div>
     </Fragment>
   )
 }
