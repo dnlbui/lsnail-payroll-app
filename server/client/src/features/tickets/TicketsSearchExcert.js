@@ -37,7 +37,7 @@ const TicketSearchBar = () => {
   }
   else if (isSuccess) {
     //map query data to picker data. This is an array of objects with label and value properties
-    pickerData = queryData.map( element => ({ label: element.name, value: element._id }))
+    pickerData = async () => await queryData.map( element => ({ label: element.name, value: element._id }))
     content = (<SelectPicker label="Employee" data={pickerData} onChange={(value)=>handleNameInput(value)} style={{ width: 175 }} />)
   }
   else if (isError) {

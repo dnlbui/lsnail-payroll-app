@@ -26,7 +26,7 @@ const TicketList = () => {
     content = <p>Loading...</p>
   } 
   else if (isSuccess) {
-    content = queryData.map( element => {
+    content = async () => await queryData.map( element => {
       return(<TicketCardExcerpt key={element._id} element={element}/>)
     })
   } 

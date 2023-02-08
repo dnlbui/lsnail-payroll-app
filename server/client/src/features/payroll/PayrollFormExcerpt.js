@@ -36,7 +36,7 @@ const PayrollForm = () => {
     optionsContent = <p>Loading...</p>
   }
   else if (employeesIsSuccess) {
-    optionsContent = employees.map((employee) => (
+    optionsContent = async () => await employees.map((employee) => (
       <option key={employee._id} value={employee._id}>{employee.name}</option>
     ))
   }

@@ -20,7 +20,7 @@ const EmployeesList = () => {
     content = <p>Loading...</p>
   } 
   else if (isSuccess) {
-    content = queryData.map( element => {
+    content = async () => queryData.map( element => {
       return(<EmployeeCardExcerpt key={element._id} element={element}/>)
     })
   } 
