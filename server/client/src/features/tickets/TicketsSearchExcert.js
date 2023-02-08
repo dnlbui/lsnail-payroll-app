@@ -46,6 +46,14 @@ const TicketSearchBar = () => {
 
   return (
     <Fragment>
+      <div className="row gy-10">
+        <div className="col ">
+          <div className="jumbotron jumbotron-fluid ">
+            <h1 className="display-8 text-center">Ticket List</h1>
+          </div>
+        </div>
+      </div>
+
       <div className='col-lg-6 offset-lg-4 '>
         <Form layout="inline">
 

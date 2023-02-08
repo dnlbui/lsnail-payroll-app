@@ -10,17 +10,16 @@ const Tickets = () => {
     <Fragment>
       <Nav/>
       <br></br>
-      <TicketForm/>
-      <div className="row row-cols-3 gy-10 offset-5">
-        <div className="col ">
-          <div className="jumbotron jumbotron-fluid ">
-            <div className="container">
-              <h1 className="display-8 text-center">Ticket List</h1>
-            </div>
+      <div className='container'>
+        <div className="row row-cols-md-2 row-cols-1 gy-10">
+          <div classname="col">
+            <TicketForm/>
+          </div>
+          <div classname="col">
+            <TicketsSearch/>
           </div>
         </div>
       </div>
-      <TicketsSearch/>
       <br></br>
       <br></br>
     </Fragment>

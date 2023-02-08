@@ -9,7 +9,7 @@ const Employees = () => {
     <Fragment>
       <Nav/>
       <div className='container'>
-        <div className="row row-cols-2 gy-10">
+        <div className="row row-cols-md-2 row-cols-1 gy-10">
           <div className="col ">
             <EmployeeForm/>
           </div>
