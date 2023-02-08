@@ -38,7 +38,7 @@ const TicketSearchBar = () => {
   else if (isSuccess) {
     //map query data to picker data. This is an array of objects with label and value properties
     pickerData = queryData.map( element => ({ label: element.name, value: element._id }))
-    content = (<SelectPicker label="Employee" data={pickerData} onChange={(value)=>handleNameInput(value)} style={{ width: 180 }} />)
+    content = (<SelectPicker label="Employee" data={pickerData} onChange={(value)=>handleNameInput(value)} style={{ width: 300 }} />)
   }
   else if (isError) {
     content = <div>{error}</div>
@@ -58,15 +58,15 @@ const TicketSearchBar = () => {
       
         
         <Form layout="inline">
-          <div className='row row-cols-2 align-self-center'>
-            <div className="col d-flex p-2 bd-highlight ">
-
+          <div className='row row-cols-1 row-cols-sm-2 justify-content-md-center'>
+            
+              
               {/* The select picker */}
-              <Form.Group controlId="username-7">
+              <Form.Group className="gy-3" controlId="username-7">
                 {content}
               </Form.Group>
 
-              <Form.Group controlId="date-7">
+              <Form.Group className="gy-3 " controlId="date-7">
                 <DateRangePicker
                   cleanable={false}
                   format="yyyy-MM-dd hh:mm aa"
@@ -78,7 +78,7 @@ const TicketSearchBar = () => {
                   }}
                 />
               </Form.Group>
-            </div>
+            
           </div>
         </Form>
 

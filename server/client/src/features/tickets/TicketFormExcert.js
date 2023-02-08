@@ -97,10 +97,11 @@ const TicketForm = () => {
         <div className='row'>
           <h1 className='text-center'>Add Ticket Form</h1>
         </div>
-        <br></br>
+    
         <div className='row gy-5'>
-         
+          
           <form onSubmit={handleSubmit}>
+            
             {/* <!-- Name input--> */}
             <div className="form-outline mb-4">
               <select className="form-select" id="name" aria-label="Default select example" value={name} onChange={handleNameInput} required >

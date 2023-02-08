@@ -69,36 +69,45 @@ const Login = () => {
     <Nav/>
     <div className='container'>
       <section className='login'>
-        <div className="row row-cols-1 gy-10 offset-4">
+
+        <div className="row gy-10 offset-4">
           <br></br>
           <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
           <br></br>
         </div>
-        <div className="row row-cols-1 gy-5 offset-4">
-          <h1>Log In</h1>
+
+        <div className="row justify-content-md-center">
+          <div className='col-md-6'>
+            <h1>Log In</h1>
+          </div>
         </div>
-        <div className="row row-cols-2 gy-5 offset-4">
-          <form onSubmit={handleSubmit}>
-            {/* <!-- Email input --> */}
-            <div className="form-outline mb-4">
-              <input type="email" id="username" ref={userRef} value={email} onChange={handleUserInput} required className="form-control" />
-              <label className="form-label" htmlFor="form2Example1">Email address</label>
-            </div>
+        
+        <div className="row justify-content-lg-center">
+          <div className='col-md-6'>
+            <form onSubmit={handleSubmit}>
 
-            {/* <!-- Password input --> */}
-            <div className="form-outline mb-4">
-              <input autoComplete="on" type="password" id="password" onChange={handlepasswordInput} value={password} required className="form-control" />
-              <label className="form-label" htmlFor="form2Example2">Password</label>
-            </div>
+              {/* <!-- Email input --> */}
+              <div className="form-outline mb-4">
+                <input type="email" id="username" ref={userRef} value={email} onChange={handleUserInput} required className="form-control" />
+                <label className="form-label" htmlFor="form2Example1">Email address</label>
+              </div>
 
-            {/* <!-- Submit button --> */}
-            <button type="submit" className="btn btn-primary btn-block mb-4">Sign in</button>
+              {/* <!-- Password input --> */}
+              <div className="form-outline mb-4">
+                <input autoComplete="on" type="password" id="password" onChange={handlepasswordInput} value={password} required className="form-control" />
+                <label className="form-label" htmlFor="form2Example2">Password</label>
+              </div>
 
-            {/* <!-- Register buttons --> */}
-            <div className="text-center">
-              <p>Create an account? <a href="/register">Register</a></p>
-            </div>
-          </form>
+              {/* <!-- Submit button --> */}
+              <button type="submit" className="btn btn-primary btn-block mb-4">Sign in</button>
+
+              {/* <!-- Register buttons --> */}
+              <div className="text-center">
+                <p>Create an account? <a href="/register">Register</a></p>
+              </div>
+              
+            </form>
+          </div>
         </div>
       </section>
     </div>

@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { useDeleteTicketMutation } from './TicketsApiSlice';
 
 //Returns a card for each product
@@ -12,6 +13,7 @@ export default function TicketCard ({element}) {
   }
 
   return (
+    <Fragment>
     <div className='col'>
       <div className="card" value={_id} style={{width: 180}}>
         <div className="card-body">
@@ -25,5 +27,7 @@ export default function TicketCard ({element}) {
         <button type="button" value={_id} className="btn btn-danger" onClick={handleClick}>Delete</button>
       </div>
     </div>
+    <br></br>
+    </Fragment>
   )
 }
