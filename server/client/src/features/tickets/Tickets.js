@@ -12,10 +12,10 @@ const Tickets = () => {
       <br></br>
       <div className='container'>
         <div className="row row-cols-md-2 row-cols-1 gy-10">
-          <div classname="col">
+          <div className="col">
             <TicketForm/>
           </div>
-          <div classname="col">
+          <div className="col">
             <TicketsSearch/>
           </div>
         </div>

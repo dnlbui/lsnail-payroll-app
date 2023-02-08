@@ -32,6 +32,9 @@ module.exports = function(app) {
   app.post('/api/ticket/:employee', requireAuth, EmployeeControl.createNewTicket)
   //route that gets ticket lists from a specific queries (completed)
   app.get('/api/ticket/', requireAuth, EmployeeControl.ticketQuery)
+
+  app.delete('/api/ticket/:ticket', requireAuth, EmployeeControl.removeTicket)
+
   //route that .get by finding the employee by ID or name... then queries for date range... then aggregates the tickets total... Then manipulate the data to get what we need
   app.get('/api/ticket/aggregation', requireAuth, EmployeeControl.aggregateTickets)
   

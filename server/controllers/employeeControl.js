@@ -85,6 +85,15 @@ exports.ticketQuery = async (req, res) => {
   })
 }
 
+// Removes ticket from employee profile
+exports.removeTicket = function (req, res) {
+  const ticketId = req.params.ticket;
+  Ticket.findByIdAndDelete({_id: ticketId}, (err, data) => {
+    if(err) throw err;
+    res.send(data);
+  });
+};
+
 // 
 exports.aggregateTickets = async (req, res) => {
   const employeeId = await req.query.employeeId || null;

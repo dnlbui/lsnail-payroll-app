@@ -36,7 +36,7 @@ const TicketList = () => {
   return (
     <section className='ticketlist'>
       <div className='container'>
-        <div className="row row-cols-3 gy-5 offset-1">
+        <div className="row row-cols-xxl-3 row-cols-md-2 row-cols-sm-2 row-cols-1 gy-5">
           {content}
         </div>  
       </div>

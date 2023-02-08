@@ -1,9 +1,9 @@
 import React, {Fragment} from 'react';
-//import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useRef, useState, useEffect } from 'react';
 
 import { useEmployeesListQuery } from '../employees/EmployeesApiSlice';
-import { useRegisterTicketMutation } from './TicketsApiSlice';
+import { useRegisterTicketMutation, useTicketsListQuery } from './TicketsApiSlice';
 
 //Submit ticket form. Returns a form with input fields for date, total, and tip.
 const TicketForm = () => {
@@ -11,8 +11,8 @@ const TicketForm = () => {
   const errRef = useRef();
   const [errMsg, setErrMsg] = useState('');
 
-  //const startDate = useSelector((state) => state.ticketList.startDate);
-  //const endDate = useSelector((state) => state.ticketList.endDate);
+  const startDate = useSelector((state) => state.ticketList.startDate);
+  const endDate = useSelector((state) => state.ticketList.endDate);
 
 
   const [name, setName] = useState(''); // is actually employeeId
@@ -20,7 +20,7 @@ const TicketForm = () => {
   const [total, setTotal] = useState('');
   const [tip, setTip] = useState('');
 
-  // let searchBarQuery = `employeeId=${name}&dateStart=${startDate}&dateEnd=${endDate}`;
+  let searchBarQuery = `employeeId=${name}&dateStart=${startDate}&dateEnd=${endDate}`;
   //const { refetch } = useTicketsListQuery(searchBarQuery);
 
   const { 
@@ -28,7 +28,7 @@ const TicketForm = () => {
     isLoading: employeesLoading,
     isSuccess: employeesIsSuccess,
     isError: employeesIsError,
-    //error: employeesError,
+    error: employeesError,
   } = useEmployeesListQuery();
 
   let content
@@ -97,7 +97,7 @@ const TicketForm = () => {
         <div className='row'>
           <h1 className='text-center'>Add Ticket Form</h1>
         </div>
-
+        <br></br>
         <div className='row gy-5'>
          
           <form onSubmit={handleSubmit}>

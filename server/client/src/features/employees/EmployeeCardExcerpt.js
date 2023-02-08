@@ -10,7 +10,7 @@ export default function EmployeeCardExcerpt ({element}) {
   const handleClick = () =>{
     deleteEmployee(_id);
     //refetch();
-    content = <p>Deleted</p>
+    //content = <p>Deleted</p>
   }
 
   let content = (

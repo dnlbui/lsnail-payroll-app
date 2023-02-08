@@ -33,15 +33,15 @@ const TicketSearchBar = () => {
   let content;
   let pickerData;
   if(isLoading) {
-    content = <p>Loading...</p>
+    content = <div>Loading...</div>
   }
   else if (isSuccess) {
     //map query data to picker data. This is an array of objects with label and value properties
     pickerData = queryData.map( element => ({ label: element.name, value: element._id }))
-    content = (<SelectPicker label="Employee" data={pickerData} onChange={(value)=>handleNameInput(value)} style={{ width: 175 }} />)
+    content = (<SelectPicker label="Employee" data={pickerData} onChange={(value)=>handleNameInput(value)} style={{ width: 180 }} />)
   }
   else if (isError) {
-    content = <p>{error}</p>
+    content = <div>{error}</div>
   }
 
   return (
@@ -54,30 +54,36 @@ const TicketSearchBar = () => {
         </div>
       </div>
 
-      <div className='col-lg-6 offset-lg-4 '>
+      <br></br>
+      
+        
         <Form layout="inline">
+          <div className='row row-cols-2 align-self-center'>
+            <div className="col d-flex p-2 bd-highlight ">
 
-          <Form.Group controlId="username-7">
-            {content}
-          </Form.Group>
+              {/* The select picker */}
+              <Form.Group controlId="username-7">
+                {content}
+              </Form.Group>
 
-          <Form.Group controlId="date-7">
-            <DateRangePicker
-              cleanable={false}
-              format="yyyy-MM-dd hh:mm aa"
-              defaultCalendarValue={[startOfDay(parseISO(new Date().toISOString())), endOfDay(parseISO(new Date().toISOString()))]}
-              isoWeek ranges={[]}
-              onChange={(value)=>{ 
-                handleStartDateInput(value); 
-                handleEndDateInput(value);
-              }}
-            />
-          </Form.Group>
-
+              <Form.Group controlId="date-7">
+                <DateRangePicker
+                  cleanable={false}
+                  format="yyyy-MM-dd hh:mm aa"
+                  defaultCalendarValue={[startOfDay(parseISO(new Date().toISOString())), endOfDay(parseISO(new Date().toISOString()))]}
+                  isoWeek ranges={[]}
+                  onChange={(value)=>{ 
+                    handleStartDateInput(value); 
+                    handleEndDateInput(value);
+                  }}
+                />
+              </Form.Group>
+            </div>
+          </div>
         </Form>
-      </div>
 
       <TicketListExcerpt/>
+
       <hr/>
     </Fragment>
   )
