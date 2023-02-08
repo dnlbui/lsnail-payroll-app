@@ -12,23 +12,30 @@ import Nav from '../../components/NavUnAuth';
 const Login = () => {
   const userRef = useRef()
   const errRef = useRef()
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errMsg, setErrMsg] = useState('')
-  const navigate = useNavigate()
 
-  const [login, { isLoading }] = useLoginMutation()
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
+  //redux toolkit hook to dispatch actions
+  const [login, { isLoading }] = useLoginMutation()
+  
+
+  //focus on username input on page load
   useEffect(()=> {
     userRef.current.focus()
   },[])
 
+  //clear error message on user input
   useEffect(()=>{
     setErrMsg('')
   },[email,password])
   
   const handleSubmit = async(e) => {
+    //prevent page refresh
     e.preventDefault()
 
     try{
