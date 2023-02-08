@@ -69,12 +69,12 @@ const Login = () => {
     <Nav/>
     <div className='container'>
       <section className='login'>
-        <div className="row row-cols-2 gy-10 offset-4">
+        <div className="row row-cols-1 gy-10 offset-4">
           <br></br>
           <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
           <br></br>
         </div>
-        <div className="row row-cols-2 gy-5 offset-4">
+        <div className="row row-cols-1 gy-5 offset-4">
           <h1>Log In</h1>
         </div>
         <div className="row row-cols-2 gy-5 offset-4">
