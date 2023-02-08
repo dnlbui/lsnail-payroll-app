@@ -10,7 +10,7 @@ const InvoiceForm  = () => {
   const [name, setName] = useState('');
 
   const userRef = useRef();
-  //const [setErrMsg] = useState('');
+  const [setErrMsg] = useState('');
 
   useEffect(()=> {
     userRef.current.focus()

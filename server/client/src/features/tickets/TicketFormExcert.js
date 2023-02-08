@@ -28,7 +28,7 @@ const TicketForm = () => {
     isLoading: employeesLoading,
     isSuccess: employeesIsSuccess,
     isError: employeesIsError,
-    //error: employeesError,
+    error: employeesError,
   } = useEmployeesListQuery();
 
   let content
@@ -36,7 +36,7 @@ const TicketForm = () => {
     content = <Fragment></Fragment>
   }
   else if (employeesIsSuccess) {
-    content = async () => await employees.map((employee) => (
+    content = employees.map((employee) => (
       <option key={employee._id} value={employee._id}>{employee.name}</option>
     ))
   }
