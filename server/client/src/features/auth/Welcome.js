@@ -21,12 +21,16 @@ const Welcome = () => {
           <section className="welcome">
             <h1>{welcome}</h1>
             <p>Token: {tokenAbbr}</p>
+            <p>This app was made for my mom who records all the service tickets and calculates the payroll by hand.</p>
+            <p>I tried to make this user friendly and have the least amount of typing possible.</p>
+            <p>It is a work in progress and I will be adding more features as I go.</p>
+            <p>Thank you for checking it out!</p>
             <p><Link to="/home">Go to the home page!</Link></p>
           </section>
           </div>
         </div>
         <div className="row">
-        <img src="https://scontent-dfw5-2.xx.fbcdn.net/v/t1.18169-9/19437568_10213320713232945_6356459327715879214_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=0debeb&_nc_ohc=6LD9T9mer8oAX9h9cgN&_nc_ht=scontent-dfw5-2.xx&oh=00_AfByjmyfU5qAhLfyyNodpMJVmm-2-oi1Em48zlTG-bHU_A&oe=640BA9B0" className="img-fluid" alt="Taken by Bui"></img>
+        <img src="https://www.myyosemitepark.com/wp-content/uploads/2019/07/YO-HalfDome-halfdomecables_Ordelheide_2400.jpg?crop=535:301&width=1070&enable=upscale" className="img-fluid" alt="Taken by Bui"></img>
         </div>
       </div>
     </Fragment>

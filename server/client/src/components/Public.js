@@ -30,6 +30,7 @@ const Public = () => {
                                 <footer>
                                     <div className="row row-cols-1">
                                         <Link to="/login">Employee Login</Link>
+                                        <Link to="/register">Register</Link>
                                     </div>
                                 </footer>
                             </section>
