@@ -41,7 +41,6 @@ const EmployeesList = () => {
           <div className="jumbotron jumbotron-fluid ">
             <div className="container">
               <h1 className="display-8 text-center">Employee List</h1>
-              <input className="btn btn-primary" type="reset" value="Refresh List" onClick={handleClick}></input>
             </div>
           </div>
         </div>

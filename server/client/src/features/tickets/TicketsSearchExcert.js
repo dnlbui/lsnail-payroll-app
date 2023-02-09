@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 import { useEmployeesListQuery } from '../employees/EmployeesApiSlice';
 import TicketListExcerpt from './TicketListExcerpt';
 import { setStartDate, setEndDate, setName } from './TicketListSlice';
-import { startOfDay, endOfDay, parseISO } from 'date-fns';
+import { startOfDay, endOfDay, parseISO, addDays, endOfWeek, startOfWeek, startOfMonth, endOfMonth, addMonths, subDays } from 'date-fns';
 
 const TicketSearchBar = () => {
   //dispatch for redux toolkit
@@ -44,6 +44,38 @@ const TicketSearchBar = () => {
     content = <div>{error}</div>
   }
 
+  const predefinedRanges = [
+    {
+      label: 'Today',
+      value: [startOfDay(new Date()), endOfDay(new Date())],
+      placement: 'left'
+    },
+    {
+      label: 'Yesterday',
+      value: [addDays(startOfDay(new Date()), -1), addDays(endOfDay(new Date()), -1)]
+    },
+    {
+      label: 'This week',
+      value: [startOfWeek(startOfDay(new Date())), endOfWeek(endOfDay(new Date()))],
+      placement: 'left'
+    },
+    {
+      label: 'Last 7 days',
+      value: [subDays(startOfDay(new Date()), 6), endOfDay(new Date())]
+    },
+    {
+      label: 'Last month',
+      value: [startOfMonth(addMonths(startOfDay(new Date()), -1)), endOfMonth(addMonths(endOfDay(new Date()), -1))],
+      placement: 'left'
+    },
+    {
+      label: 'This year',
+      value: [new Date(startOfDay(new Date()).getFullYear(), 0, 1), endOfDay(new Date())],
+      placement: 'left'
+    },
+
+  ]
+
   return (
     <Fragment>
 
@@ -57,17 +89,27 @@ const TicketSearchBar = () => {
     
         <Form layout="inline">
           <div className='row row-cols-1 row-cols-sm-2 justify-content-md-center'>
+
+
+
               {/* The select picker */}
               <Form.Group className="gy-3" controlId="username-7">
                 {content}
               </Form.Group>
 
+
+              {/* The date range picker */}
               <Form.Group className="gy-3 " controlId="date-7">
                 <DateRangePicker
+                  ranges={predefinedRanges}
+                  preventOverflow={true}
+                  size="md"
+                  placeholder="------Select Date Range------"
                   cleanable={false}
                   format="yyyy-MM-dd hh:mm aa"
                   defaultCalendarValue={[startOfDay(parseISO(new Date().toISOString())), endOfDay(parseISO(new Date().toISOString()))]}
-                  isoWeek ranges={[]}
+                  isoWeek
+                  showOneCalendar
                   onChange={(value)=>{ 
                     handleStartDateInput(value); 
                     handleEndDateInput(value);
