@@ -79,6 +79,7 @@ const Login = () => {
         <div className="row justify-content-md-center">
           <div className='col-md-6'>
             <h1>Log In</h1>
+            <p>Please use a fake password and email even though it'll be encrypted</p>
           </div>
         </div>
         

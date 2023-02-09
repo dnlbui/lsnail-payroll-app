@@ -20,7 +20,26 @@ const Public = () => {
                                     <p>Service ticket book keeping and payroll calculator</p>
                                     <p>Created by Daniel Bui</p>
                                     <a href="https://www.linkedin.com/in/dnlbui/">LinkedIn</a>
-                                    <p>Tech stack: MangoDB, JavaScript, React, Bootstrap, Node, Express, Stripe API</p>
+                                    <p>Tech stack: </p>
+                                        <ul>
+                                            <li>React/Redux</li>
+                                            <li>Node+Express</li>
+                                            <li>MongoDB+Mongoose</li>
+                                            <li>BootStrap</li>
+                                            <li>JavaScript, HTML, CSS</li>
+                                        </ul>
+                                    <p>Libaries and API used:</p>
+                                    <ul>
+                                        <li>JWT</li>
+                                        <li>bcrypt</li>
+                                        <li>PassPort</li>
+                                        <li>react-router-dom</li>
+                                        <li>RTK Query</li>
+                                        <li>RSuite</li>
+                                        <li>Stripe API</li>
+                                    </ul>
+
+
                                     <p>&nbsp;</p>
                                     <div className="row row-cols-1">
                                     <address>
