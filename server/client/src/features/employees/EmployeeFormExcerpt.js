@@ -1,5 +1,5 @@
 import React, {Fragment, useRef, useState, useEffect } from 'react';
-import { useRegisterEmployeeMutation, useEmployeesListQuery } from './EmployeesApiSlice';
+import { useRegisterEmployeeMutation } from './EmployeesApiSlice';
 
 
 //Submit employee form. Returns a form with input fields for name, email, and image.

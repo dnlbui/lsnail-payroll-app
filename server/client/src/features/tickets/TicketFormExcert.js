@@ -1,9 +1,8 @@
 import React, {Fragment} from 'react';
-import { useSelector } from 'react-redux';
 import { useRef, useState, useEffect } from 'react';
 
 import { useEmployeesListQuery } from '../employees/EmployeesApiSlice';
-import { useRegisterTicketMutation, useTicketsListQuery } from './TicketsApiSlice';
+import { useRegisterTicketMutation } from './TicketsApiSlice';
 
 //Submit ticket form. Returns a form with input fields for date, total, and tip.
 const TicketForm = () => {
@@ -11,24 +10,17 @@ const TicketForm = () => {
   const errRef = useRef();
   const [errMsg, setErrMsg] = useState('');
 
-  const startDate = useSelector((state) => state.ticketList.startDate);
-  const endDate = useSelector((state) => state.ticketList.endDate);
-
-
   const [name, setName] = useState(''); // is actually employeeId
   const [date, setDate] = useState('');
   const [total, setTotal] = useState('');
   const [tip, setTip] = useState('');
-
-  let searchBarQuery = `employeeId=${name}&dateStart=${startDate}&dateEnd=${endDate}`;
-  //const { refetch } = useTicketsListQuery(searchBarQuery);
 
   const { 
     data: employees,
     isLoading: employeesLoading,
     isSuccess: employeesIsSuccess,
     isError: employeesIsError,
-    error: employeesError,
+    //error: employeesError,
   } = useEmployeesListQuery();
 
   let content
@@ -62,9 +54,6 @@ const TicketForm = () => {
     try{
       //unwrap from redux toolkit cuz lets us use try catch block and response accordingly 
       registerTicket({ name, date, total, tip });
-      
-      //refetch tickets list
-      //refetch();
 
       //set local state to empty string
       setDate('');
