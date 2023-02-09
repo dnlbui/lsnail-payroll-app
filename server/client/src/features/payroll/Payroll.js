@@ -8,9 +8,8 @@ const Payroll = () => {
     <Fragment>
       <Nav/>
       <br></br>
-
       <div className="container">
-        <div className="row row-cols-xl-2 row-cols-md-2">
+        <div className="row row-cols-xl-2 row-cols-md-2 row-cols-sm-1">
          <PayrollBarExcerpt/>
         </div>
       </div>

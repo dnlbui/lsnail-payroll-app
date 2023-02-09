@@ -75,7 +75,6 @@ const PayrollForm = () => {
   return (
     <Fragment>
       <div className='col'>
-
         <div className="row row-cols-3 gy-10">
           <div className="col ">
             <div className="jumbotron jumbotron-fluid ">
