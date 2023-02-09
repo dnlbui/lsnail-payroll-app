@@ -17,6 +17,10 @@ const Public = () => {
                                 </header>
                                 <main>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p>Service ticket book keeping and payroll calculator</p>
+                                    <p>Created by Daniel Bui</p>
+                                    <a href="https://www.linkedin.com/in/dnlbui/">LinkedIn</a>
+                                    <p>Tech stack: MangoDB, JavaScript, React, Bootstrap, Node, Express, Stripe API</p>
                                     <p>&nbsp;</p>
                                     <div className="row row-cols-1">
                                     <address>

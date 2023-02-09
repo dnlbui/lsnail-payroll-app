@@ -13,6 +13,8 @@ const Invoice = () => {
             <div className="jumbotron jumbotron-fluid ">
               <div className="container">
                 <h1 className="display-8 text-center">Invoice</h1>
+                <p>Invoice using Stripe API connected to a test account</p>
+                <p>Right not price is hard coded to a $30 item</p>
               </div>
             </div>
           </div>
