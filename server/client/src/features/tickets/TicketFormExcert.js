@@ -84,8 +84,10 @@ const TicketForm = () => {
       <section className='registerticket'>
 
         <div className='row'>
-          <h1 className='text-center'>Add Ticket Form</h1>
+          <h1 className='text-center'>Add Ticket</h1>
+          <p>Form submission used to book keep service tickets for individual employees</p>
         </div>
+        <br></br>
     
         <div className='row gy-5'>
           

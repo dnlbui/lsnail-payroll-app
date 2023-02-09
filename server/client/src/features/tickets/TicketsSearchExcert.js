@@ -83,10 +83,11 @@ const TicketSearchBar = () => {
         <div className="col ">
           <div className="jumbotron jumbotron-fluid ">
             <h1 className="display-8 text-center">Ticket List</h1>
+            <p>View employee's submitted tickets by picking a range of dates</p>
           </div>
         </div>
       </div>
-    
+        <br></br>
         <Form layout="inline">
           <div className='row row-cols-1 row-cols-sm-2 justify-content-md-center'>
 

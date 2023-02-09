@@ -14,7 +14,7 @@ export default function TicketCard ({element}) {
 
   return (
     <Fragment>
-      <div className='col'>
+      <div className='col d-flex justify-content-center'>
         <div className="card" value={_id} style={{width: 180}}>
           <div className="card-body">
             <h5 className="card-title text-center">{stringDate}</h5>

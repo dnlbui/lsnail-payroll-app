@@ -1,7 +1,7 @@
 export const PayrollCard = ({ data }) => {
   return (
-    <div className='p-2 flex-fill bd-highlight'>
-      <div className="card" value={data[0]._id} style={{width: 180}}>
+    <div class="col d-flex justify-content-center">
+      <div className="card" value={data[0]._id} style={{width: 300}}>
         <div className="card-body">
           <h5 className="card-title text-center">Employee's Calculated Payroll</h5>
           <hr/>

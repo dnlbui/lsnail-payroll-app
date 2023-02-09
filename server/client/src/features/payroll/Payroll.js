@@ -9,7 +9,7 @@ const Payroll = () => {
       <Nav/>
       <br></br>
       <div className="container">
-      <div className="row gy-5 d-flex justify-content-center">
+      <div className="row row-cols-md-2 row-cols-1 gy-10">
          <PayrollBarExcerpt/>
         </div>
       </div>
