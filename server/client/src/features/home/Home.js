@@ -16,7 +16,7 @@ const Home = () => {
       <div className='container'>
         <div className="row row-cols-1 gy-5 offset-1">
           <section className="welcome">
-            <h1>{home}</h1>
+            <h4>{home}</h4>
             <h6>Future features</h6>
             <ul>
               <li>Role based authorization</li>
