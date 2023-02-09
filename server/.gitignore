@@ -19,4 +19,4 @@ create_price.js
 
 .env
 
-config/dev.js 
+/config/dev.env.js
