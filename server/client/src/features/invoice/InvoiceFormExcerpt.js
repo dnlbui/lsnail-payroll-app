@@ -36,11 +36,13 @@ const InvoiceForm  = () => {
 
   return (
     <Fragment>
-      <div className="row row-cols-2 gy-10 offset-4">
-        <div className="col ">
+      <div className="container">
+      <div className="row justify-content-lg-center">
+        <div className="col-md-6">
           <div className="jumbotron jumbotron-fluid ">
-            <div className="container">
+            <div className="col">
               <form onSubmit={handleSubmit}>
+                
                 <div className="form-group">
                   <label htmlFor="email">Email address</label>
                   <input
@@ -54,6 +56,7 @@ const InvoiceForm  = () => {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
+
                 <br></br>
                 <div className="form-group">
                   <label htmlFor="price">Price</label>
@@ -89,6 +92,7 @@ const InvoiceForm  = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </Fragment>
   );
