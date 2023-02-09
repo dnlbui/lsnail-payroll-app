@@ -48,7 +48,7 @@ const EmployeesList = () => {
       <br></br>
       <section className='employeelist'>
         <div className='container'>
-          <div className="row row-cols-xxl-3 row-cols-md-2 row-cols-sm-2 row-cols-1 gy-5">
+          <div className="row gy-5 d-flex justify-content-center">
             {content}
           </div>
         </div>

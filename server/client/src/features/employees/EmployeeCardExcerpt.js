@@ -12,8 +12,8 @@ export default function EmployeeCardExcerpt ({element}) {
   }
 
   let content = (
-    <div className="col ">
-      <div className="card" value={_id} style={{width: 180}}>
+    <div className='col align-items-center'>
+    <div className="card d-flex justify-content-center" value={_id} style={{width: 180}}>
         <img src={image} className="card-img-top" alt="..."/>
           <h5 className="card-title text-center">{name}</h5>
         <button type="button" value={_id} className="btn btn-outline-danger" onClick={handleClick}>Delete</button>

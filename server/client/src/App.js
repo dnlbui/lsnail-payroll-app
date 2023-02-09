@@ -15,7 +15,6 @@ import Invoice from './features/invoice/Invoice'
 
 const App = () => {
   return (
-    <div className="container">
       <Routes>
         <Route path='/' element={<Layout/>}>
           {/* public routes */}
@@ -34,7 +33,6 @@ const App = () => {
           </Route>
         </Route>
       </Routes>
-    </div>
   )
 }
 

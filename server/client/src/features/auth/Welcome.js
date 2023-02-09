@@ -16,7 +16,7 @@ const Welcome = () => {
     <Fragment>
       <Nav/>
       <div className='container'>
-        <div className="row row-cols-1 gy-5 offset-3">
+        <div className="row row-cols-1 gy-5 ">
           <div className="col">
           <section className="welcome">
             <h1>{welcome}</h1>

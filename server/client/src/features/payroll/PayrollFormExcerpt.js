@@ -139,9 +139,9 @@ const PayrollForm = () => {
       </div>
 
       <div className='col'>
-        <section className='ticketlist'>
-          <div className='container'>
-            <div className="row justify-content-center">
+        <section className='payrolllist'>
+          <div className='p-2 flex-fill bd-highlight'>
+            <div className="p-2 flex-fill bd-highlight">
               {content}
             </div>
           </div>
