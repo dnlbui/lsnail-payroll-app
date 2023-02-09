@@ -19,7 +19,7 @@ const Welcome = () => {
         <div className="row gy-5">
           <div className="col">
           <section className="welcome">
-            <h1>{welcome}</h1>
+            <h4>{welcome}</h4>
             <p>Token: {tokenAbbr}</p>
             <p>This app was made for my mom who records all the service tickets and calculates the payroll by hand.</p>
             <p>I tried to make this user friendly and have the least amount of typing possible.</p>
