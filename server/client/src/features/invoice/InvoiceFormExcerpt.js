@@ -79,7 +79,7 @@ const InvoiceForm  = () => {
                   />
                 </div>
                 <br></br>
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-outline-dark">
                   Submit
                 </button>
               </form>

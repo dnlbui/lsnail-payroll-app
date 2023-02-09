@@ -130,7 +130,7 @@ const TicketForm = () => {
             </div>
 
             {/* <!-- Submit button --> */}
-            <button type="submit" className="btn btn-primary btn-block mb-4">Submit</button>
+            <button type="submit" className="btn btn-outline-dark btn-block mb-4">Submit</button>
           </form>
 
           <div className='row'>

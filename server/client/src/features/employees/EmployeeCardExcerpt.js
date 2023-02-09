@@ -20,7 +20,7 @@ export default function EmployeeCardExcerpt ({element}) {
         <ul className="list-group list-group-flush">
           <li className="list-group-item">Name: {name}</li>
         </ul>
-        <button type="button" value={_id} className="btn btn-danger" onClick={handleClick}>Delete</button>
+        <button type="button" value={_id} className="btn btn-outline-danger" onClick={handleClick}>Delete</button>
       </div>
     </div>
   )

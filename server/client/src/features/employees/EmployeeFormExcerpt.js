@@ -84,7 +84,7 @@ const EmployeeForm = () => {
           </div>
 
           {/* <!-- Submit button --> */}
-          <button type="submit" className="btn btn-primary btn-block mb-4">Add New Employee</button>
+          <button type="submit" className="btn btn-outline-dark btn-block mb-4">Add New Employee</button>
         </form>
       </div>
 

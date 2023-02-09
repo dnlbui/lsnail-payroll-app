@@ -95,9 +95,9 @@ const Register = () => {
           </div>
 
           {/* <!-- Submit button --> */}
-          <button type="submit" className="btn btn-primary btn-block mb-4">Sign in</button>
+          <button type="submit" className="btn btn-outline-dark btn-block mb-4">Sign in</button>
 
-          {/* <!-- Register buttons --> */}
+          {/* <!-- Login  --> */}
           <div className="text-center">
             <p>Have an existing account? <a href="/login">Login</a></p>
           </div>
