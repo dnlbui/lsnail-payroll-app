@@ -11,7 +11,6 @@ export const authSlice = createSlice({
   reducers: {
     setCredentials : (state, action) => {
       const { token, email } = action.payload
-      localStorage.setItem('token', token);
       console.log(token);
       //state.email = email;
       state.token = token

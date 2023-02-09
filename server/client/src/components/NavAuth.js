@@ -33,7 +33,7 @@ const Nav = () => {
               <Link to="/invoice" className="nav-link" >Invoice</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" onClick={()=>dispatch(logOut)}href="/">Logout</a>
+              <a className="nav-link" onClick={()=>{dispatch(logOut());}}href="/">Logout</a>
             </li>
           </ul>
         </div>
