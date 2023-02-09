@@ -1,8 +1,5 @@
 const { Customer } = require('../models/customer');
 
-
-
-
 exports.sendInvoice = function (req, res) {
 
   // stript processing key ******************need to hide this in env file...

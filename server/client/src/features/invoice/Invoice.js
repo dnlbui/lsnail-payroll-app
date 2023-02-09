@@ -8,13 +8,15 @@ const Invoice = () => {
       <Fragment>
         <Nav/>
         <br></br>
-        <div className="row row-cols-3 gy-10 offset-5">
+        <div className="row gy-5 d-flex justify-content-center">
           <div className="col d-flex justify-content-center">
             <div className="jumbotron jumbotron-fluid ">
               <div className="container">
                 <h1 className="display-8 text-center">Invoice</h1>
-                <p>Invoice using Stripe API connected to a test account</p>
-                <p>Right not price is hard coded to a $30 item</p>
+                <p>Invoice using Stripe API connected to a test account.</p>
+                <p>Right now price is hard coded to a $30 item and have not made a confirmation alert.</p>
+                <p>Will only be able to see that this worked in a video I'll here link here.</p>
+                <br></br>
               </div>
             </div>
           </div>
