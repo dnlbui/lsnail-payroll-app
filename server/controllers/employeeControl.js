@@ -7,7 +7,7 @@ exports.createNewEmployee = function (req, res) {
   "role"    : 'employee',
   "name"    : req.body.name,
   "email"   : req.body.email,
-  "image"   : req.body.image,
+  "image"   : req.body.image ||'https://via.placeholder.com/250?text=Employee+Image',
   })
 
   newEmployee.save((err, data) => {

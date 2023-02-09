@@ -79,7 +79,7 @@ const EmployeeForm = () => {
 
           {/* <!-- Image input --> */}
           <div className="form-outline mb-4">
-            <input type="text" id="image" onChange={handleImageInput} value={image} required className="form-control" />
+            <input type="text" id="image" onChange={handleImageInput} value={image} className="form-control" />
             <label className="form-label" htmlFor="ImageInput">Image Url</label>
           </div>
 

@@ -14,8 +14,6 @@ const EmployeesList = () => {
     error
   }  = useEmployeesListQuery();
 
-  const { refetch } = useEmployeesListQuery();
-
   //if statement that will return component depending on query status
   let content;
   if(isLoading) {
@@ -28,10 +26,6 @@ const EmployeesList = () => {
   } 
   else if (isError) {
     content = <p>{error}</p>
-  }
-
-  const handleClick = async (e) => {
-    refetch();
   }
 
   return (
