@@ -35,11 +35,12 @@ const TicketList = () => {
   }
   return (
     <section className='ticketlist'>
-      <div className='container'>
-        <div className="row gy-5 d-flex justify-content-center">
+        <div className="container-fluid">
+        <div className="row gy-5 align-self-center">
           {content}
-        </div>  
+        </div> 
       </div>
+      
     </section>
   )
 }
