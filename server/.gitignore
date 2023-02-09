@@ -18,3 +18,5 @@ yarn-error.log*
 create_price.js
 
 .env
+
+/config/dev.env.js
