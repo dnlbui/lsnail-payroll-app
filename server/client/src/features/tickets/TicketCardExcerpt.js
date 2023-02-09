@@ -14,20 +14,20 @@ export default function TicketCard ({element}) {
 
   return (
     <Fragment>
-    <div className='col'>
-      <div className="card" value={_id} style={{width: 180}}>
-        <div className="card-body">
-          <h5 className="card-title text-center">{stringDate}</h5>
-          <hr/>
-          <h5 className="card-title text-center">Service Total:</h5>
-          <h5 className="card-title text-center">${serviceTotal}</h5>
-          <h5 className="card-title text-center">Credit CardTip:</h5>
-          <h5 className="card-title text-center">${creditCardTip}</h5>
+      <div className='col'>
+        <div className="card" value={_id} style={{width: 180}}>
+          <div className="card-body">
+            <h5 className="card-title text-center">{stringDate}</h5>
+            <hr/>
+            <h5 className="card-title text-center">Service Total:</h5>
+            <h5 className="card-title text-center">${serviceTotal}</h5>
+            <h5 className="card-title text-center">Credit CardTip:</h5>
+            <h5 className="card-title text-center">${creditCardTip}</h5>
+          </div>
+          <button type="button" value={_id} className="btn btn-outline-danger" onClick={handleClick}>Delete</button>
         </div>
-        <button type="button" value={_id} className="btn btn-danger" onClick={handleClick}>Delete</button>
       </div>
-    </div>
-    <br></br>
+      <br></br>
     </Fragment>
   )
 }

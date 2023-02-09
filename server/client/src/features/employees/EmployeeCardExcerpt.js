@@ -9,17 +9,13 @@ export default function EmployeeCardExcerpt ({element}) {
 
   const handleClick = () =>{
     deleteEmployee(_id);
-    //refetch();
-    //content = <p>Deleted</p>
   }
 
   let content = (
     <div className="col ">
       <div className="card" value={_id} style={{width: 180}}>
         <img src={image} className="card-img-top" alt="..."/>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item">Name: {name}</li>
-        </ul>
+          <h5 className="card-title text-center">{name}</h5>
         <button type="button" value={_id} className="btn btn-outline-danger" onClick={handleClick}>Delete</button>
       </div>
     </div>

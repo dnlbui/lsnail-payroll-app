@@ -46,6 +46,7 @@ const TicketSearchBar = () => {
 
   return (
     <Fragment>
+
       <div className="row gy-10">
         <div className="col ">
           <div className="jumbotron jumbotron-fluid ">
@@ -53,14 +54,9 @@ const TicketSearchBar = () => {
           </div>
         </div>
       </div>
-
-      <br></br>
-      
-        
+    
         <Form layout="inline">
           <div className='row row-cols-1 row-cols-sm-2 justify-content-md-center'>
-            
-              
               {/* The select picker */}
               <Form.Group className="gy-3" controlId="username-7">
                 {content}
@@ -78,13 +74,9 @@ const TicketSearchBar = () => {
                   }}
                 />
               </Form.Group>
-            
           </div>
         </Form>
-
       <TicketListExcerpt/>
-
-      <hr/>
     </Fragment>
   )
 }
