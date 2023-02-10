@@ -15,7 +15,7 @@ const Invoice = () => {
                 <h1 className="display-8 text-center">Invoice</h1>
                 <p>Invoice using Stripe API connected to a test account.</p>
                 <p>Right now price is hard coded to a $30 item and have not made a confirmation alert.</p>
-                <p>Will only be able to see that this worked in a video I'll here link here.</p>
+                <p>Will only be able to see that this worked in a video I'll link here.</p>
                 <br></br>
               </div>
             </div>

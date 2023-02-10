@@ -8,18 +8,19 @@ const Public = () => {
         <Fragment>
             <Nav/>
             <div className='container'>
-                <div className="row">
-                    <div className="col"></div>
-                        <div className="col col-6">
+                <div className="row gy-5 d-flex justify-content-center">
+                    <div className="col-8  ">
                             <section className="public">
                                 <header>
                                     <h1>Lorem Ipsum!</h1>
                                 </header>
                                 <main>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    <p>Service ticket book keeping and payroll calculator</p>
-                                    <p>Created by Daniel Bui</p>
-                                    <a href="https://www.linkedin.com/in/dnlbui/">LinkedIn</a>
+                                    <br></br>
+                                    <h6>Service ticket book keeping and payroll calculator</h6>
+                                    <h6>Created by Daniel Bui (<a href="https://www.linkedin.com/in/dnlbui/">LinkedIn</a>)</h6>
+                                    <br></br>
+                                    
                                     <p>Tech stack: </p>
                                         <ul>
                                             <li>React/Redux</li>
@@ -30,10 +31,10 @@ const Public = () => {
                                         </ul>
                                     <p>Libaries and API used:</p>
                                     <ul>
-                                        <li>JWT</li>
+                                        <li>JWT with local strategy</li>
                                         <li>bcrypt</li>
                                         <li>PassPort</li>
-                                        <li>react-router-dom</li>
+                                        <li>react-router with protected routes</li>
                                         <li>RTK Query</li>
                                         <li>RSuite</li>
                                         <li>Stripe API</li>
@@ -57,8 +58,7 @@ const Public = () => {
                                     </div>
                                 </footer>
                             </section>
-                        </div>
-                    <div className="col"></div>
+                    </div>
                 </div>
             </div>
         </Fragment>

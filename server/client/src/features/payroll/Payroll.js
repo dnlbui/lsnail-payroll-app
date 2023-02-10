@@ -1,6 +1,6 @@
 import Nav from "../../components/NavAuth";
 import { Fragment } from 'react';
-import PayrollBarExcerpt from "./PayrollFormExcerpt";
+import PayrollFormExcerpt from "./PayrollFormExcerpt";
 
 const Payroll = () => {
 
@@ -10,7 +10,7 @@ const Payroll = () => {
       <br></br>
       <div className="container">
       <div className="row row-cols-md-2 row-cols-1 gy-10">
-         <PayrollBarExcerpt/>
+         <PayrollFormExcerpt/>
         </div>
       </div>
     </Fragment>
