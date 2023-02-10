@@ -75,7 +75,7 @@ const PayrollForm = () => {
   return (
     <Fragment>
       <div className='col'>
-        <div className="row d-flex justify-content-center">
+        <div className="row gy-5 d-flex justify-content-center">
           <div className="col-md-6">
             <div className="jumbotron jumbotron-fluid ">
               <div className="container">
@@ -91,12 +91,12 @@ const PayrollForm = () => {
             <p ref={errRef} className={errMsg ? 'error' : 'offscreen'} aria-live="assertive">{errMsg}</p>
           </div>
 
-          <div className='row d-flex justify-content-center'>
+          <div className='row gy-5 d-flex justify-content-center'>
             <form>
               <p>Select an employee and date range to calculate payroll</p>
               <br></br>
               
-              <div className="row d-flex justify-content-center">
+              <div className="row gy-5 d-flex justify-content-center">
               <div className="col">
               
               {/* <!-- Name input--> */}
@@ -141,11 +141,14 @@ const PayrollForm = () => {
 
       <div className='col'>
         <section className='payrolllist'>
-        <div class="row d-flex justify-content-center">
+        <div class="row gy-5 d-flex justify-content-center">
           {content}
           </div>
         </section>
+        <br></br>
+        <br></br>
       </div>
+     
     </Fragment>
   )
 }

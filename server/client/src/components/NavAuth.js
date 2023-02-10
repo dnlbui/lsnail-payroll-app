@@ -6,8 +6,6 @@ import { useDispatch } from "react-redux";
 const Nav = () => {
   const dispatch = useDispatch();
 
-
-
   return (
     <nav className="navbar navbar-dark bg-dark navbar-expand-lg bg-primary">
       <div className="container-fluid">

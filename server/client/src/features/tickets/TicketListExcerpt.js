@@ -38,6 +38,8 @@ const TicketList = () => {
         <div className="container-fluid">
         <div className="row gy-5 align-self-center">
           {content}
+          <br></br>
+          <br></br>
         </div> 
       </div>
       
