@@ -19,6 +19,7 @@ const Public = () => {
                                     <br></br>
                                     <h6>Service ticket book keeping and payroll calculator</h6>
                                     <h6>Created by Daniel Bui (<a href="https://www.linkedin.com/in/dnlbui/">LinkedIn</a>)</h6>
+                                    <a href="https://www.loom.com/share/80e4d6514b43493da092116e5f2acba9">Loom Video</a>
                                     <br></br>
                                     
                                     <p>Tech stack: </p>
