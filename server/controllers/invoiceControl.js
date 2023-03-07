@@ -1,9 +1,10 @@
+require("dotenv").config();
 const { Customer } = require('../models/customer');
 
 exports.sendInvoice = function (req, res) {
 
   // stript processing key ******************need to hide this in env file...
-  const stripe = require('stripe')('sk_test_51MYtYyBxFn9jWOFEFIbu3aWCdeuTpNCnPC0cTaEbydlPxGkLoUX5FS11kmBtAmDCA5R8F2PbpYZsZb3Ca8sNp4dc003B6yNGb6');
+  const stripe = require('stripe')(keys.STRIPE_SECRET_KEY);
 
   //need to grab email, price, and name from req.body...............
   let email = req.query.email;
