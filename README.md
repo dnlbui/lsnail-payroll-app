@@ -14,7 +14,7 @@ Features
 
    Login and registration of users
    Management of employees, including creation, editing, and deletion of employee tickets
-   Creation and sending of invoices to customers, (TBD) with the ability to view the status of the invoice
+   Creation and sending of invoices to customers, (OTW) with the ability to view the status of the invoice
 
 Installation
 
@@ -58,10 +58,9 @@ Usage
 
 To use the app, you can register a new account or log in with the credentials of an existing user. Once you are logged in, you can use the navbar to navigate to different pages of the app:
 
-   -Dashboard: This page displays a summary of the user's information, such as the number of employees and customers, as well as any upcoming appointments and unpaid invoices.
+   -Dashboard: This page displays a summary of the user's information, such as the number of employees and customers, (OTW) and unpaid invoices.
    -Employees: This page allows the user to manage their employees, including creating, editing, and deleting employee records. The user can also view the details of an employee, such as their work schedule and past payments.
    -Invoices: This page allows the user to create and send invoices to customers, as well as view the status of each invoice. The user can also mark an invoice as paid or cancel it if necessary.
-   -Appointments: This page allows the user to view upcoming appointments and cancel them if necessary. The user can also create a new appointment by selecting a customer and a date/time slot.
 
 Contributing
 
