@@ -141,7 +141,7 @@ const PayrollForm = () => {
 
       <div className='col'>
         <section className='payrolllist'>
-        <div class="row gy-5 d-flex justify-content-center">
+        <div className="row gy-5 d-flex justify-content-center">
           {content}
           </div>
         </section>

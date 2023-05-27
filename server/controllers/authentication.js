@@ -21,8 +21,11 @@ function tokenForEmployee(employee) {
 exports.signin = function(req, res, next) {
   // Employee has had their email and password auth'd
   // Just need to give them a token
+
   res.send({
-    token: tokenForEmployee(req.user)
+    token: tokenForEmployee(req.user),
+    role: req.user.role,
+    name: req.user.name,
   });
 };
 
@@ -30,6 +33,7 @@ exports.currentEmployee = function(req, res) {
   const employee = {
     email: req.user.email,
     token: tokenForEmployee(req.user),
+    role: req.user.role,
   }
 
   res.send(user);

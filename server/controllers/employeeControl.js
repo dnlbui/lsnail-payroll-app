@@ -21,6 +21,7 @@ exports.createNewEmployee = function (req, res) {
 // Get employee list. Returns an array of objects with ID+name
 exports.getEmployeeList =  async (req, res) => {
   // cheeck for role and only send back employees if role is manager
+  console.log(req.user)
   if(req.user.role === 'manager') {
     Employee.find()
     //don't need to put _id bc it'll be added automatically
@@ -29,8 +30,17 @@ exports.getEmployeeList =  async (req, res) => {
       if(err) throw err;
       res.send(e);
     })
+  } 
+  // if role is employee, send back the employee's name and image
+  else if(req.user.role === 'employee') {
+    Employee.find({_id: req.user._id})
+    .select(['name','image'])
+    .exec((err,e) => {
+      if(err) throw err;
+      res.send(e);
+    })
   } else {
-    res.status(401).send('You are not authorized to view this information')
+    res.status(401).send('You are not authorized for this action.')
   }
 }
 

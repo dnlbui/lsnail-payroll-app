@@ -12,10 +12,10 @@ const Public = () => {
                     <div className="col-8  ">
                             <section className="public">
                                 <header>
-                                    <h1>Lorem Ipsum!</h1>
+                                    <h1>LoneStar Nails</h1>
                                 </header>
                                 <main>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p>Pamper yourself...</p>
                                     <br></br>
                                     <h6>Service ticket book keeping and payroll calculator</h6>
                                     <h6>Created by Daniel Bui (<a href="https://www.linkedin.com/in/dnlbui/">LinkedIn</a>)</h6>

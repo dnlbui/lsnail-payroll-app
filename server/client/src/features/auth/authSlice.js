@@ -4,6 +4,7 @@ const initialState = {
   email: null,
   token: null,
   role: null,
+  name: null,
 }
 
 // authSlice is a reducer that is setting the state of the email and token
@@ -11,23 +12,25 @@ export const authSlice = createSlice({
   name:'auth',
   initialState,
   reducers: {
+    // where else is setCredentials used?
+    // setCredentials is used in the login and register components
     setCredentials : (state, action) => {
-      const { token, email } = action.payload
+      console.log(action.payload)
+      const { token, email, role, name } = action.payload
       console.log(token);
       state.token = token
       state.email = email
+      state.role = role
+      state.name = name
     },
     logOut: (state, action) => {
       state.email = null;
       state.token = null;
     },
-    currentRole: (state, action) => {
-      state.role = action.payload;
-    }
   },
 })
 
-export const { setCredentials, logOut, currentRole } = authSlice.actions
+export const { setCredentials, logOut } = authSlice.actions
 
 export default authSlice.reducer
 //our selectors
@@ -36,3 +39,4 @@ export default authSlice.reducer
 export const selectCurrentRole = (state) => state.auth.role;
 export const selectCurrentEmail = (state) => state.auth.email;
 export const selectCurrentToken = (state) => state.auth.token;
+export const selectCurrentName = (state) => state.auth.name;

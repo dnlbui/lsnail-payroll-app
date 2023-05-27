@@ -1,14 +1,17 @@
 //a protected component
 import {Fragment} from "react";
 import { useSelector } from "react-redux";
-import { selectCurrentEmail } from "../auth/authSlice";
+import { selectCurrentName } from "../auth/authSlice";
+import { selectCurrentRole } from "../auth/authSlice";
 import Nav from "../../components/NavAuth";
 
 
 const Home = () => {
-  const email = useSelector(selectCurrentEmail)
+  const name = useSelector(selectCurrentName)
+  const role = useSelector(selectCurrentRole);
 
-  const home = email ? `Welcome ${email}!` : 'Welcome! '
+  const personName = name ? `Welcome ${name}!` : 'Welcome! '
+  const personRole = role ? `You're signed in as a ${role}` : 'Your role is not set'
 
   const content = (
     <Fragment>
@@ -16,7 +19,8 @@ const Home = () => {
       <div className='container'>
         <div className="row row-cols-1 gy-5">
           <section className="welcome">
-            <h4>{home}</h4>
+            <h4>{personName}</h4>
+            <h4>{personRole}</h4>
             <br></br>
             <h6>Coming soon...</h6>
             <ul>

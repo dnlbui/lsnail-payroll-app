@@ -2,10 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { logOut } from "../features/auth/authSlice";
 import { useDispatch } from "react-redux";
+// get signed in user's role
+import { selectCurrentRole } from "../features/auth/authSlice";
+
+import { useSelector } from "react-redux";
+
+
 
 const Nav = () => {
   const dispatch = useDispatch();
-
+  const role = useSelector(selectCurrentRole);
   return (
     <nav className="navbar navbar-dark bg-dark navbar-expand-lg bg-primary">
       <div className="container-fluid">
@@ -24,9 +30,11 @@ const Nav = () => {
             <li className="nav-item">
               <Link to="/payroll" className="nav-link" >Payroll</Link>
             </li>
+            {role === 'manager' ? 
             <li className="nav-item">
+              {/* Get role of signed in person to set the conditional component to show up if the person's role is manager */}
               <Link to="/employees" className="nav-link">Employees</Link>
-            </li>
+            </li> : null}
             <li className="nav-item">
               <Link to="/invoice" className="nav-link" >Invoice</Link>
             </li>

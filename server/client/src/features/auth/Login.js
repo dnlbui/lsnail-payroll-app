@@ -88,13 +88,13 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
 
               {/* <!-- Email input --> */}
-              <div className="form-outline mb-4">
-                <input type="email" id="username" ref={userRef} value={email} onChange={handleUserInput} required className="form-control" />
-                <label className="form-label" htmlFor="form2Example1">Email address</label>
+              <div className="form-outline mb-4" id='usernamecomp1'>
+                <input autoComplete='username' type="email" id="username" ref={userRef} value={email} onChange={handleUserInput} required className="form-control" />
+                <label id='usernamecomp2' className="form-label" htmlFor="form2Example1">Email address</label>
               </div>
 
               {/* <!-- Password input --> */}
-              <div className="form-outline mb-4">
+              <div className="form-outline mb-4" id='usernamecomp3'>
                 <input autoComplete="new-password" type="password" id="password" onChange={handlepasswordInput} value={password} required className="form-control" />
                 <label className="form-label" htmlFor="form2Example2">Password</label>
               </div>
