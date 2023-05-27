@@ -14,7 +14,23 @@ const EmployeeSchema = new Schema({
 });
 
 EmployeeSchema.methods.setPassword = function ( password ) {
+  // Creating a unique salt for a particular user
   this.salt = crypto.randomBytes( 16 ).toString('hex');
+  // Hashing user's salt and password with 1000 iterations, 64 length and sha512 digest
+  // q: explain all of the this.hash stuff
+  // a: this.hash is a property of the employee object
+  //    crypto.pbkdf2Sync is a function that takes 5 arguments
+  //    1. password
+  //    2. salt
+  //    3. iterations
+  //    4. keylen
+  //    5. digest
+  //    the result of crypto.pbkdf2Sync is a buffer
+  //    .toString('hex') converts the buffer to a string of hex values
+  // crypto.pbkdf2Sync returns a buffer. A buffer is an array of integers. 
+  // The integers are between 0 and 255.
+  // The integers represent the ASCII values of the characters in the string.
+  // The buffer is a hexadecimal representation of the string.
   this.hash = crypto.pbkdf2Sync( password, this.salt, 1000, 64, 'sha512' ).toString( 'hex' );
 };
 

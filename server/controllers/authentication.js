@@ -14,7 +14,10 @@ function tokenForEmployee(employee) {
     keys.TOKEN_SECRET
   )
 };
-//figure out WHY req.user and not req.employee
+// q: why is it req.user and not req.employee?
+// a: passport assigns the authenticated employee to the req.user field
+//    this is a convention from passport
+//    you can change this by modifying the passport config file?
 exports.signin = function(req, res, next) {
   // Employee has had their email and password auth'd
   // Just need to give them a token
@@ -38,6 +41,7 @@ exports.signup = function(req, res, next) {
   const email = req.body.email;
   const password = req.body.password;
   const name = req.body.name;
+  const code = req.body.code;
 
   if(!email || !password || !name) {
     return res.status(422).send({ error: 'You must provide an name, email, and password'});
@@ -60,6 +64,12 @@ exports.signup = function(req, res, next) {
     employee.setPassword(password);
 
     employee.name = name;
+
+    if(code === 'Abigail14') {
+      employee.role = 'manager';
+    } else {
+      employee.role = 'employee';
+    }
 
     employee.save(function(err, employee) {
       if ( err ) { return next (err); }

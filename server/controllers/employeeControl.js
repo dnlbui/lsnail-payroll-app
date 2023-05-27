@@ -4,7 +4,7 @@ const ObjectId = require('mongoose').Types.ObjectId
 // Creates a new employee profile
 exports.createNewEmployee = function (req, res) {
   const newEmployee = new Employee ({
-  "role"    : 'employee',
+  "role"    : req.body.role == 'Abgail14'? 'manager' : 'employee',
   "name"    : req.body.name,
   "email"   : req.body.email,
   "image"   : req.body.image ||'https://via.placeholder.com/250?text=Employee+Image',
@@ -20,22 +20,31 @@ exports.createNewEmployee = function (req, res) {
 
 // Get employee list. Returns an array of objects with ID+name
 exports.getEmployeeList =  async (req, res) => {
-  Employee.find()
-  //don't need to put _id bc it'll be added automatically
-  .select(['name','image'])
-  .exec((err,e) => {
-    if(err) throw err;
-    res.send(e);
-  })
+  // cheeck for role and only send back employees if role is manager
+  if(req.user.role === 'manager') {
+    Employee.find()
+    //don't need to put _id bc it'll be added automatically
+    .select(['name','image'])
+    .exec((err,e) => {
+      if(err) throw err;
+      res.send(e);
+    })
+  } else {
+    res.status(401).send('You are not authorized to view this information')
+  }
 }
 
 // Removes employee profile
 exports.removeEmployee = function (req, res) {
-  const employeeId = req.params.employee;
-  Employee.findByIdAndDelete({_id: employeeId}, (err, data) => {
-    if(err) throw err;
-    res.send(data);
-  });
+  if(req.user.role === 'manager') {
+    const employeeId = req.params.employee;
+    Employee.findByIdAndDelete({_id: employeeId}, (err, data) => {
+      if(err) throw err;
+      res.send(data);
+    });
+  } else {
+    res.status(401).send('You are not authorized for this action.')
+  }
 };
 
 // Add/Push ticket id into the employee ticket array while saving a new ticket

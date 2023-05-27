@@ -44,3 +44,15 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Updating heroku
+
+Enter 'git subtree push --prefix server heroku master'
+
+## To run local database download mongosh
+
+Enter 'mongosh' in terminal
+
+To run client in terminal in client repo enter 'npm start'
+
+To run server in terminal inside server repo enter 'npm run dev'

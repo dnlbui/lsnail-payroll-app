@@ -15,6 +15,7 @@ const Register = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [code, setCode] = useState('')
   const [errMsg, setErrMsg] = useState('')
   const navigate = useNavigate()
 
@@ -33,14 +34,15 @@ const Register = () => {
     e.preventDefault()
 
     try{
-      //unwrap from redux toolkit cuz lets us use try catch block and response accordingly 
-      const userData = await register({ email, password, name }).unwrap()
+      // .unwrap is used to unwrap the value of a promise without having to use .then()
+      const userData = await register({ email, password, name, code }).unwrap()
       // argument should return token and username
       dispatch(setCredentials({ ...userData, email }))
       //set local state to empty string
       setEmail('');
       setPassword('');
       setName('');
+      setCode('');
       navigate('/welcome')
     } catch (err) {
       if(!err?.response) {
@@ -59,6 +61,7 @@ const Register = () => {
   const handleEmailInput = (e) => setEmail(e.target.value);
   const handlePasswordInput = (e) => setPassword(e.target.value);
   const handleNameInput = (e) => setName(e.target.value);
+  const handleCodeInput = (e) => setCode(e.target.value);
 
 
   const content = isLoading ? <h1>Loading...</h1> : (
@@ -91,15 +94,23 @@ const Register = () => {
 
           {/* <!-- Email input --> */}
           <div className="form-outline mb-4">
-            <input type="email" id="email" ref={userRef} value={email} onChange={handleEmailInput} required className="form-control" />
+            <input autoComplete='new-email' type="email" id="email" ref={userRef} value={email} onChange={handleEmailInput} required className="form-control" />
             <label className="form-label" htmlFor="EmailInput">Email address</label>
           </div>
 
           {/* <!-- Password input --> */}
           <div className="form-outline mb-4">
-            <input type="password" id="password" onChange={handlePasswordInput} value={password} required className="form-control" />
+            <input autoComplete='new-password' type="password" id="password" onChange={handlePasswordInput} value={password} required className="form-control" />
             <label className="form-label" htmlFor="PasswordInput">Password</label>
           </div>
+
+          {/* <!-- ManagerId input --> */}
+          <div className="form-outline mb-4">
+            <input type="text" id="role" ref={userRef} value={code} onChange={handleCodeInput} className="form-control" />
+            <label className="form-label" htmlFor="ManagerIdInput">Manager Code if Applicable</label>
+          </div>
+
+
 
           {/* <!-- Submit button --> */}
           <button type="submit" className="btn btn-outline-dark btn-block mb-4">Sign in</button>
