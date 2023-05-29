@@ -27,7 +27,7 @@ const Home = () => {
               <li>Item editing</li>  
               <li>Charts (chart.js)</li>
               <li>More UI/UX for practice</li>
-              <li>Role based authorization</li>
+              <li>Role based authorization (Completed 5/28; Manager + Employee)</li>
               <li>Alerts for succesful submissions</li>
               <li>Adding date range to payroll card response</li>
               <li>Input price attached to itemized object for stripe API</li>                      
